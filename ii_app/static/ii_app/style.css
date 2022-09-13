@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(154, 205, 50);
+ 
+}
+
+h1{
+    color: brown;
+}
+
+/* 
+.card {
+    text-align: left;
+    height: 100%;
+    width: 50%;
+    display: inline-block;
+}
+
+.card-img-top {
+    display: inline-block;
+    height: 100px;
+} */
