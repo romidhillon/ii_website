@@ -1,0 +1,15 @@
+{% extends 'ii_app/base.html' %}
+
+
+{% block body %}
+
+<div class="risk-container">
+    <form class="risk-form" action="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+    
+{% endblock %}

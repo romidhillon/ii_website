@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from django.shortcuts import HttpResponse
-from django.template import loader 
+from django.template import loader
+
+from ii_app.forms import RiskForm 
 from .models import Employee
+from .forms import RiskForm
 
 # Create your views here.
 
@@ -26,5 +29,11 @@ def resource_detail(request,employee_id):
     return render (request, 'ii_app/resource_detail.html', context)
 
 
-def risks(request):
-    return render (request, 'ii_app/risks.html')
+def risk_form(request):
+    form = RiskForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('ii_app/home.html')
+
+    return render (request, 'ii_app/risk_form.html', {'form':form})

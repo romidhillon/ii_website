@@ -1,21 +1,85 @@
-body {
-    background-color: rgb(154, 205, 50);
- 
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1{
-    color: brown;
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    z-index: 99;
+    background-color: #212121;
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-bottom: 7px solid #d70b52;
+    margin-top:0;
 }
 
-/* 
-.card {
-    text-align: left;
-    height: 100%;
-    width: 50%;
+nav .container {
+    margin-left: 0%;
+    padding-left: 5%;
+    padding-top: 0;
+    margin-top:0;
+    right:0;
+}
+
+nav h1{
+    color: #fff;
+    font-size: 28px;
+    font-weight: 650;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    float:left;
+    position: relative;
+    display:inline-block;
+    padding-top: 4%;
+    padding-left: 2%;
+}
+
+.nav-list {
+    right:0;
+    margin-right: 0;
+    padding-right: 0;
     display: inline-block;
 }
 
-.card-img-top {
-    display: inline-block;
-    height: 100px;
-} */
+li a{
+    color: #f5f5f4;
+    text-decoration:none;
+    display:inline-block;
+    padding-top: 5%;
+    padding-left: 3%;
+    right:0;
+}
+
+.logo-image {
+    position: relative;
+    left:0;
+    height: 12%;
+    width: 12%;
+    float:left;
+    display:inline-block;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+
+form{
+    margin-top: 100px;
+}
+
+.risk-form{
+    left: 2%;
+    right:2%;
+    padding-top:3%;
+}
+
+.test {
+    border: 3px solid black ;
+  }

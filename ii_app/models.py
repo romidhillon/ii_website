@@ -16,9 +16,9 @@ class Employee(models.Model):
     cf_number = models.CharField(max_length=200)
     project_name = models.CharField(max_length=200)
     item_image = models.CharField(max_length=500, default="https://eu.evocdn.io/dealer/1065/catalog/product/images/cs_1612369426.png")
-   
+    image = models.ImageField(upload_to='images/')
     
-class Risks (models.Model):
+class Risk(models.Model):
 
     risk_description = models.CharField(max_length = 500)
     risk_impact = models.IntegerField()
@@ -26,6 +26,6 @@ class Risks (models.Model):
     risk_mitigation = models.CharField(max_length = 500)
     risk_owner = models.CharField(max_length = 200)
     risk_status = models.CharField(max_length = 500)
-    date_opened = models.DateField(max_length = 50)
+    date_opened = models.DateField()
 
 

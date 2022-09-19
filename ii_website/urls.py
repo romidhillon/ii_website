@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 # the library below has been added so that the ii_app urls path could be included in this file. 
 from django.urls import include,path
+from django.conf import settings 
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ii_app/', include('ii_app.urls')),
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+

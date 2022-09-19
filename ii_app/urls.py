@@ -11,6 +11,6 @@ urlpatterns = [
     
     path('resources/<int:employee_id>/', views.resource_detail, name='resource_detail'),
 
-    path('risks/', views.risks, name='risks'),
+    path('addrisks/', views.risk_form, name='risk_form'),
 
 ]
