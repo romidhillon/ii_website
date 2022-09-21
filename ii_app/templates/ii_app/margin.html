@@ -3,23 +3,24 @@
 {% block body %}
 
 <div class="plcalculate">
-    <h1>Profit and Loss Calculator</h1>
+    <h1>Margin Calculator</h1>
     <p>
-        Cost Price(CP) :
-        <input class="cost__price" type="number" />
+        Cost Per Day :
+        <input class="cost_per_day" type="number" />
     </p>
-  
+
     <p>
-        Selling Price(SP) :
-        <input class="selling__price" type="number" />
+        Full Rate :
+        <input class="full_rate" type="number" />
     </p>
+
+    <button onclick="CalculateMargin()">Calculate</button>
   
-    <button onclick="Calculate()">Calculate</button>
-  
-    <h2 class="profit__loss"></h2>
-    <h2 class="profit__loss__percentage"></h2>
-    <h2 class="nothing"></h2>
+    <h2 class="post_commission_rate"></h2>
+    <h2 class="margin"></h2>
+    <h2 class="margin_percentage"></h2>
   
 </div>
 
 {% endblock %}
+

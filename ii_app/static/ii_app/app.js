@@ -1,32 +1,16 @@
+function CalculateMargin() {
+    const costPerDay = document.querySelector(".cost_per_day").value
+    const fullRate = document.querySelector(".full_rate").value
 
-function Calculate(){
-    const CP= document.querySelector(".cost__price").value;
-    const SP= document.querySelector(".selling__price").value;
-        
-    const profit__loss=document.querySelector(".profit__loss");
-    const percentage=document.querySelector(".profit__loss__percentage");
-    const nothing=document.querySelector(".nothing");
+    const postCommissionRate = fullRate * 0.85
+    const margin = postCommissionRate - costPerDay
+    const marginPercentage = (margin / postCommissionRate) * 100
 
-    profit__loss.innerHTML="";
-    percentage.innerHTML="";
-    nothing.innerHTML="";
+    const postCommissionRateElement = document.querySelector(".post_commission_rate")
+    const marginElement = document.querySelector(".margin")
+    const marginPercentageElement = document.querySelector(".margin_percentage")
 
-    if(SP>CP){
-        const profit=SP - CP;
-        const profit_percent= ((profit/CP)*100).toFixed(2);
-
-        profit__loss.innerHTML="Profit : "+ profit;
-        percentage.innerHTML="Profit Percentage : "+ profit_percent;
-    }
-    if(SP<CP){
-        const loss=CP - SP;
-        const loss_percent= ((loss/CP)*100).toFixed(2);
-
-        profit__loss.innerHTML="Loss : "+ loss;
-        percentage.innerHTML="Loss Percentage : "+ loss_percent;
-    }
-    if(SP==CP){
-        nothing.innerHTML="No Profit No Loss";
-    }
+    postCommissionRateElement.innerText = `Post Commission: ${postCommissionRate.toFixed(2)}`
+    marginElement.innerText = "Margin : " + margin.toFixed(2)
+    marginPercentageElement.innerText = "Margin Percentage : " + marginPercentage.toFixed(2)
 }
-    
