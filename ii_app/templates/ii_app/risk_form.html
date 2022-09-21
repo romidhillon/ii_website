@@ -3,13 +3,19 @@
 
 {% block body %}
 
-<div class="risk-container">
-    <form class="risk-form" action="POST">
+<div class="form-group">
+
+    <form class="form-control w-75 mx-auto border border-danger border-3 bg-dark text-white"" action="POST">
         {% csrf_token %}
-        {{form}}
-        <button type="submit">Save</button>
+        {{form.as_p}}
+        <!-- <button type="submit">Save</button> -->
+        <div class="button-container">
+            <button class="btn btn-outline-light " align="center"" style="width:30%" align type="submit">Save</button>
+        </div>
     </form>
+    
 </div>
 
     
 {% endblock %}
+

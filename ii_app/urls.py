@@ -13,4 +13,6 @@ urlpatterns = [
 
     path('addrisks/', views.risk_form, name='risk_form'),
 
+    path('margin/', views.margin, name='margin'),
+ 
 ]

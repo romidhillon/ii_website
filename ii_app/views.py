@@ -37,3 +37,7 @@ def risk_form(request):
         return redirect('ii_app/home.html')
 
     return render (request, 'ii_app/risk_form.html', {'form':form})
+
+
+def margin(request):
+    return render (request, 'ii_app/margin.html')

@@ -11,12 +11,7 @@
   <title>Resources</title>
 </head>
 
-<body>
-  <div class="col-">
-
-  <h1>Resources Page</h1>
-
-</div>
+<body class="resources-body">
 
   {%block body%}
 
@@ -25,20 +20,25 @@
 
   {% if forloop.counter0|divisibleby:4 %} <div class="row"> {%  endif %}
 
-    <div class=" col-xl-3 col-lg-4 col-md-6 mt-5 ">
-      <div class="card mb-3 mx-auto text-center mt-5 border-0 ">
-        <img class="test rounded-circle card-img-top img-responsive" src="{{item.image.url}}" alt="Card image cap"
-          style=" width: 15em; height: 15em;margin: 0 auto;  ">
-        <div class="card-body">
-          <a href="/ii_app/resources/{{item.id}}">{{item.name}}</a>
+    <div class="col-xl-3 col-lg-4 col-md-6">
+      <div class="card bg-light text-center mt-5 border-1 " style="width:80%; margin-left: 10%;">
+        <img class=" card-img-top img-responsive" src="{{item.image.url}}" alt="image" style=" width: 100%;">
+        <div class="card-body bg-dark">
+          <a class="resource-text" href="/ii_app/resources/{{item.id}}">{{item.name}}</a>
         </div>
       </div>
     </div>
 
+
+
     {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><br>{%  endif %}
+
   {% endfor %}
 
   {%endblock%}
+
+
+
 
 </body>
 
