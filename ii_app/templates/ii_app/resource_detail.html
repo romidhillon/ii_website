@@ -3,9 +3,21 @@
 
 {% block body %}
 
-<h2>{{employee.position}}</h2>
-<h2>{{employee.day_rate}}</h2>
-<h2>{{employee.cf_number}}</h2>
-<h2>{{employee.project_name}}</h2>
-
+      <div class="card text-center mt-5 w-75 mx-auto">
+          <div class="card-header">
+              Assignment Date: {{Date}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Name:&nbsp; {{employee.name}}</h5>
+                <h5 class="card-title">Position:&nbsp; {{employee.position}}</h5>
+                <h5 class="card-title">Day Rate: {{employee.day_rate}}</h5>
+                <h5 class="card-title">CF Number: {{employee.cf_number}}</h5>
+                <h5 class="card-title">Project Name: {{employee.project_name}}</h5>
+             
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                Status: {{status}}
+            </div>
+        </div>
 {% endblock %}

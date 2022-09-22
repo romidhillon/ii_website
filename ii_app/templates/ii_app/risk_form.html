@@ -4,16 +4,17 @@
 {% block body %}
 
 <div class="form-group">
+    <div class="card-header bg-danger border-danger text-white text-center font-weight-bold text-uppercase">Margin Calculator</div>
+    <form class="form-control w-75 mx-auto border border-danger border-3 bg-dark text-white"" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <!-- <button type="submit">Save</button> -->
+            <div class="button-container">
+                <button class="btn btn-outline-light " align="center"" style="width:30%" align type="submit">Save</button>
+            </div>
 
-    <form class="form-control w-75 mx-auto border border-danger border-3 bg-dark text-white"" action="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <!-- <button type="submit">Save</button> -->
-        <div class="button-container">
-            <button class="btn btn-outline-light " align="center"" style="width:30%" align type="submit">Save</button>
-        </div>
     </form>
-    
+</div>
 </div>
 
     

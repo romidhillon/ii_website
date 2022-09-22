@@ -13,6 +13,9 @@ urlpatterns = [
 
     path('addrisks/', views.risk_form, name='risk_form'),
 
-    path('margin/', views.margin, name='margin'),
+    path('update/<int:risk_id>/', views.update_risk_item, name='update_risk_item'),
  
+    path('delete/<int:risk_id>/', views.delete_risk_item, name='delete_risk_item'),
+
+    path('margin/', views.margin, name='margin'),
 ]
