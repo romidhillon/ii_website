@@ -9,12 +9,9 @@ from .choices import risk_owner_choices
 
 
 # Create your models here.
-# models.Model is taking in the Model blueprint from the model function within the django.db library 
 
 class Employee(models.Model):
 
-    # the purpose of this string function below is that the names of the objects are returned when executing 
-    # Employee.objects.all() in the python shell. 
     def __str__(self):
         return self.name
 

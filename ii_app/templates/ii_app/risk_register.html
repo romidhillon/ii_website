@@ -1,0 +1,38 @@
+{% extends 'ii_app/base.html' %}
+
+{% block body %}
+
+
+
+
+<table class="table align-middle mb-0 mt-5">
+  <thead class="bg-light">
+    <tr class="">
+      <th scope="">Risk ID</th>
+      <th scope="">Risk Description</th>
+      <th scope="">Impact</th>
+      <th scope="">Probability</th>
+      <th scope="">Mitigation</th>
+      <th scope="">Owner</th>
+      <th scope="">Status</th>
+      <th scope="">Date Opened</th>
+    </tr>
+  </thead>
+  {% for item in risk_register %}
+  <tbody>
+    <tr class="">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.risk_description}}</td>
+      <td>{{item.risk_impact}}</td>
+      <td>{{item.risk_probability}}</td>
+      <td>{{item.risk_mitigation}}</td>
+      <td>{{item.risk_owner}}</td>
+      <td>{{item.risk_status}}</td>
+      <td>{{item.date_opened}}</td>
+    </tr>
+
+{% endfor %}
+
+{% endblock %}
+
+

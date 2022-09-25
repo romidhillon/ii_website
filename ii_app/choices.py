@@ -1,45 +1,45 @@
 
 status_choices = (
-        ('O','Open'),
-        ('C','Closed'),
+        ('Open','Open'),
+        ('Closed','Closed'),
     )
 
 status_choices = (
-        ('O','Open'),
-        ('C','Closed'),
+        ('Open','Open'),
+        ('Closed','Closed'),
     )
 
 position_choices = (
-    ('DAR', 'Data Architect'),
-    ('DA', 'Data Analyst'),
-    ('DS', 'Data Scientist'),
-    ('SA', 'Solution Architect'),
-    ('BA', 'Business Analyst'),
-    ('PM', 'Project Manager'),
-    ('PC', 'Project Coordinator'),
-    ('SME', 'Subject Matter Expert'),
-    ('PO', 'Product Owner'),
-    ('SE', 'Safety Engineer'),
-    ('TL', 'Team Lead'),
-    ('UX', 'UX Designer'),
-    ('PL', 'Project Lead'),
+    ('Data Architect', 'Data Architect'),
+    ('Data Analyst', 'Data Analyst'),
+    ('Data Scientist', 'Data Scientist'),
+    ('Solution Architect', 'Solution Architect'),
+    ('Business Analyst', 'Business Analyst'),
+    ('Project Manager', 'Project Manager'),
+    ('Project Coordinator', 'Project Coordinator'),
+    ('Subject Matter Expert', 'Subject Matter Expert'),
+    ('Product Owner', 'Product Owner'),
+    ('Safety Engineer', 'Safety Engineer'),
+    ('Team Lead', 'Team Lead'),
+    ('UX Designer', 'UX Designer'),
+    ('Project Lead', 'Project Lead'),
 )
 
 risk_impact_choices = (
-        ('L','Low'),
-        ('M','Medium'),
-        ('H','High'),
+        ('Low','Low'),
+        ('Medium','Medium'),
+        ('High','High'),
     )
 
 risk_probability_choices = (
-        ('L','Low'),
-        ('M','Medium'),
-        ('H','High'),
+        ('Low','Low'),
+        ('Medium','Medium'),
+        ('High','High'),
     )
 
 risk_owner_choices = (
-    ('RD', 'Romi Dhillon'),
-    ('SH', 'Serena Haak'),
-    ('TK', 'Tom Kinnear'),
-    ('JC', 'Joe Collis'),
+    ('Romi Dhillon', 'Romi Dhillon'),
+    ('Serena Haak', 'Serena Haak'),
+    ('Tom Kinnear', 'Tom Kinnear'),
+    ('Joe Collis', 'Joe Collis'),
 )

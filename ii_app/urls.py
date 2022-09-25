@@ -17,5 +17,9 @@ urlpatterns = [
  
     path('delete/<int:risk_id>/', views.delete_risk_item, name='delete_risk_item'),
 
+    path('riskregister/', views.risk_register, name='riskregister/'),
+
     path('margin/', views.margin, name='margin'),
+
+
 ]

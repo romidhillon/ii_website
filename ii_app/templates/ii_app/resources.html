@@ -24,12 +24,10 @@
       <div class="card bg-light text-center mt-5 border-1 " style="width:80%; margin-left: 10%;">
         <img class=" card-img-top img-responsive" src="{{item.image.url}}" alt="image" style=" width: 100%;">
         <div class="card-body bg-dark">
-          <a class="resource-text" href="/ii_app/resources/{{item.id}}">{{item.name}}</a>
+          <a class="resource-text" href="/ii_app/resources/{{item.employee_id}}">{{item.name}}</a>
         </div>
       </div>
     </div>
-
-
 
     {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><br>{%  endif %}
 

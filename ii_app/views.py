@@ -9,7 +9,6 @@ from .forms import RiskForm
 
 # Create your views here.
 
-# whatever name you give to the function, becomes the name of the view 
 def main(request):
     return render (request, 'ii_app/home.html')
 
@@ -23,7 +22,7 @@ def resources(request):
 
 
 def resource_detail(request,employee_id):
-    employee = Employee.objects.get(id = employee_id)
+    employee = Employee.objects.get(pk = employee_id)
     context = {
         'employee': employee,
     }
@@ -38,10 +37,6 @@ def risk_form(request):
         return redirect('')
 
     return render (request, 'ii_app/risk_form.html', {'form':form})
-
-
-def margin(request):
-    return render (request, 'ii_app/margin.html')
 
 
 def update_risk_item(request,risk_id):
@@ -64,3 +59,16 @@ def delete_risk_item(request,risk_id):
         return redirect('')
      
     return render (request, 'ii_app/delete_risk_item.html', {'risk':risk})
+
+
+def risk_register(request):
+    risk_register = Risk.objects.all()
+
+    context = {
+        'risk_register': risk_register,
+    }
+    return render (request, 'ii_app/risk_register.html', context)
+
+
+def margin(request):
+    return render (request, 'ii_app/margin.html')
