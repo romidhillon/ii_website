@@ -72,3 +72,11 @@ def risk_register(request):
 
 def margin(request):
     return render (request, 'ii_app/margin.html')
+
+
+def finances(request):
+    project_names = Employee.objects.order_by().values('project_name').distinct()
+    context = {
+        'project_names': project_names,
+    }
+    return render (request, 'ii_app/finances.html', context)

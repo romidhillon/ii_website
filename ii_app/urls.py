@@ -21,5 +21,6 @@ urlpatterns = [
 
     path('margin/', views.margin, name='margin'),
 
+    path('finances', views.finances, name='finances'),
 
 ]
