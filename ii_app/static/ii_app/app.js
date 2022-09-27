@@ -1,3 +1,5 @@
+
+// function to calculate the margin 
 function CalculateMargin() {
     const costPerDay = document.querySelector(".cost_per_day").value
     const fullRate = document.querySelector(".full_rate").value
@@ -14,3 +16,4 @@ function CalculateMargin() {
     marginElement.innerText = "Margin : " + margin.toFixed(2)
     marginPercentageElement.innerText = "Margin Percentage : " + marginPercentage.toFixed(2)
 }
+

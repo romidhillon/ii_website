@@ -8,17 +8,25 @@
               Assignment Date: {{Date}}
             </div>
             <div class="card-body">
-                <h5 class="card-title">Employee Id:{{employee.employee_id}}</h5>
-                <h5 class="card-title">Name:{{employee.name}}</h5>
-                <h5 class="card-title">Position:{{employee.position}}</h5>
-                <h5 class="card-title">Day Rate: {{employee.day_rate}}</h5>
-                <h5 class="card-title">CF Number: {{employee.cf_number}}</h5>
-                <h5 class="card-title">Project Name: {{employee.project_name}}</h5>
-             
+       
+                <h5 class="card-title">Employee Name:{{resource_detail.name}}</h5>
+                <h5 class="card-title">Employee Id:{{resource_detail.id}}</h5>
+                <h5 class="card-title">Project Code:{{resource_detail.project.code}}</h5>
+                <h5 class="card-title">Project Name: {{resource_detail.project.name}}</h5>
+                <h5 class="card-title">Position:{{resource_detail.project.position}}</h5>
+                <h5 class="card-title">Day Rate: {{resource_detail.project.day_rate}}</h5>
+                <h5 class="card-title">CF Number: {{resource_detail.project.cf_number}}</h5>
+                
                 <a href="#" class="btn btn-primary">Go somewhere</a>
+            
             </div>
             <div class="card-footer text-muted">
                 Status: {{status}}
             </div>
         </div>
 {% endblock %}
+
+
+
+
+

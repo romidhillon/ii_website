@@ -1,0 +1,27 @@
+{% extends 'ii_app/base.html' %}
+
+{% block body %}
+
+<table class="table align-middle mb-0 mt-5">
+  <thead class="bg-light">
+    <tr class="">
+      <th scope="">Project Code</th>
+      <th scope="">Invoice Value</th>
+      <th scope="">Invoice Number</th>
+      <th scope="">Date</th>
+    </tr>
+  </thead>
+  {% for item in invoice_values %}
+  <tbody>
+    <tr class="">
+      <th scope="row">{{item.project}}</th>
+      <td>{{item.value}}</td>
+      <td>{{item.number}}</td>
+      <td>{{item.date}}</td>
+
+    </tr>
+
+{% endfor %}
+
+{% endblock %}
+

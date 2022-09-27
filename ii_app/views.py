@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponse
 from django.template import loader
 
 from ii_app.forms import RiskForm 
-from .models import Employee,Risk
+from .models import Project,Employee, Risk, Cone, Booking, Invoice
 from .forms import RiskForm
 
 
@@ -14,20 +14,22 @@ def main(request):
 
 
 def resources(request):
-    employees = Employee.objects.all()
+    employee = Employee.objects.all()
+
     context = {
-        'employee_list': employees,
+        'employee': employee,
     }
     return render (request, 'ii_app/resources.html', context)
 
 
 def resource_detail(request,employee_id):
-    employee = Employee.objects.get(pk = employee_id)
+    resource_detail = Employee.objects.get(pk=employee_id)
+    
     context = {
-        'employee': employee,
+        'resource_detail': resource_detail,
+
     }
     return render (request, 'ii_app/resource_detail.html', context)
-
 
 def risk_form(request):
     form = RiskForm(request.POST or None)
@@ -75,8 +77,18 @@ def margin(request):
 
 
 def finances(request):
-    project_names = Employee.objects.order_by().values('project_name').distinct()
+    # project_names = Employee.objects.order_by().values('project_name').distinct()
+    project_and_employee_names = Employee.objects.order_by('project__code','name').all()
     context = {
-        'project_names': project_names,
+        'project_and_employee_names': project_and_employee_names,
     }
     return render (request, 'ii_app/finances.html', context)
+
+
+def finance_detail (request):
+    invoice_values = Invoice.objects.all()
+
+    context = {
+        'invoice_values': invoice_values
+    }
+    return render (request, 'ii_app/finance_detail.html', context)
