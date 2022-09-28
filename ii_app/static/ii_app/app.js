@@ -17,3 +17,4 @@ function CalculateMargin() {
     marginPercentageElement.innerText = "Margin Percentage : " + marginPercentage.toFixed(2)
 }
 
+// function to calculate the life to date value

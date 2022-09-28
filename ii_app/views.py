@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect 
 from django.shortcuts import HttpResponse
 from django.template import loader
+from django.db.models import Sum
 
 from ii_app.forms import RiskForm 
 from .models import Project,Employee, Risk, Cone, Booking, Invoice
@@ -84,10 +85,13 @@ def finances(request):
     return render (request, 'ii_app/finances.html', context)
 
 
-def finance_detail (request, code ):
+def finance_detail (request, code):
     code = Invoice.objects.filter(project__code = code)
+    sum_of_invoice_values = Invoice.objects.aggregate(LTD=Sum('value'))['LTD']
 
     context = {
-        'invoice_values':code
+        'invoice_values':code,
+        'sum_of_invoice_values':sum_of_invoice_values
     }
     return render (request, 'ii_app/finance_detail.html', context)
+
