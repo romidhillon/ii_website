@@ -23,5 +23,6 @@ urlpatterns = [
 
     path('finances', views.finances, name='finances'),
 
-    path('finance_detail', views.finance_detail, name='finance_detail'),
+    path('finances/<str:code>/', views.finance_detail, name='finance_detail'),
 ]
+

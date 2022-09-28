@@ -55,7 +55,6 @@ def update_risk_item(request,risk_id):
 def delete_risk_item(request,risk_id):
     risk = Risk.objects.get(id=risk_id)
   
-
     if request.method =='POST':
         risk.delete()
         return redirect('')
@@ -85,10 +84,10 @@ def finances(request):
     return render (request, 'ii_app/finances.html', context)
 
 
-def finance_detail (request):
-    invoice_values = Invoice.objects.all()
+def finance_detail (request, code ):
+    code = Invoice.objects.filter(project__code = code)
 
     context = {
-        'invoice_values': invoice_values
+        'invoice_values':code
     }
     return render (request, 'ii_app/finance_detail.html', context)
