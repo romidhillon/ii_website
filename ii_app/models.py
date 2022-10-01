@@ -29,6 +29,7 @@ class Employee (models.Model):
     id = models.IntegerField(primary_key=True)
     project = models.ForeignKey(Project,  on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    cone_rate = models.FloatField()
     image = models.ImageField(upload_to='images/')
 
 class Risk(models.Model):
@@ -42,13 +43,10 @@ class Risk(models.Model):
     status = models.CharField(max_length = 500, choices= status_choices)
     date_opened = models.DateField()
 
-class Cone (models.Model):
-
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    rate = models.FloatField()
 
 class Booking (models.Model):
 
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     week_ending_date = models.DateField()
     hours = models.FloatField()

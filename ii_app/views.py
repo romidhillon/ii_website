@@ -4,7 +4,7 @@ from django.template import loader
 from django.db.models import Sum
 
 from ii_app.forms import RiskForm 
-from .models import Project,Employee, Risk, Cone, Booking, Invoice
+from .models import Project,Employee, Risk, Booking, Invoice
 from .forms import RiskForm
 
 
@@ -87,11 +87,19 @@ def finances(request):
 
 def finance_detail (request, code):
     code = Invoice.objects.filter(project__code = code)
-    sum_of_invoice_values = Invoice.objects.aggregate(LTD=Sum('value'))['LTD']
+    sum_of_invoice_values = Invoice.objects.aggregate(Sum=Sum('value'))['Sum']
 
+    hours = Booking.objects.values("project__code").annotate(sum=Sum('hours'))[0]['sum']
+    hours = int(hours)
+
+    # charge_rate = Employee.objects.values("employee__project__code").annotate(sum=Sum('rate'))[0]['sum']
+
+    # life_to_date = hours * charge_rate
+    
     context = {
         'invoice_values':code,
-        'sum_of_invoice_values':sum_of_invoice_values
+        'sum_of_invoice_values':sum_of_invoice_values,
+        # 'life_to_date':life_to_date,
     }
     return render (request, 'ii_app/finance_detail.html', context)
 
