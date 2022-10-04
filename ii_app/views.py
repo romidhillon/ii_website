@@ -93,19 +93,17 @@ def finances(request):
 
 def finance_detail (request, code):
     invoice_values = Invoice.objects.filter(project__code = code)
-    # sum_of_invoice_values = Invoice.objects.aggregate(Sum=Sum('value'))['Sum']
+    sum_of_invoice_values = Invoice.objects.aggregate(Sum=Sum('value'))['Sum']
 
-    # hours = Booking.objects.values("project__code").annotate(sum=Sum('hours'))[0]['sum']
-    # hours = int(hours)
-
-    # charge_rate = Cone.objects.values("employee__project__code").annotate(sum=Sum('rate'))[0]['sum']
-
-    # life_to_date = hours * charge_rate
+    hours = (Booking.objects.values("assignment__resource__project__code").annotate(sum=Sum('hours'))[0]['sum'])
+    charge_rate = int(Booking.objects.values("assignment__rate")[0].get('assignment__rate'))
+   
+    life_to_date =  charge_rate * hours
     
     context = {
         'invoice_values':invoice_values,
-        # 'sum_of_invoice_values':sum_of_invoice_values,
-        # 'life_to_date':life_to_date,
+        'sum_of_invoice_values':sum_of_invoice_values,
+        'life_to_date':life_to_date,
     }
     return render (request, 'ii_app/finance_detail.html', context)
 

@@ -2,46 +2,31 @@
 
 {% block body %}
 
-<div class="card border-dark mb-3 mx-auto mt-5" style="max-width: 50rem;">
-    <div class="card-header bg-danger border-danger text-white text-center font-weight-bold text-uppercase">Margin Calculator</div>
-    <div class="card-body text-white bg-dark">
-      <p class="card-title text-light">Enter the CONE rate and the day rate to Network Rail</p>
-      <p class="card-text text-light">Cost Per Day:
-        <input class="cost_per_day" type="number" />
-      </p>
-      <p class="card-text text-light"> Full Rate:
-        <input class="full_rate" type="number" />
-      </p>
-      <!-- <button onclick="CalculateMargin()">Calculate</button> -->
-      <button type="button" class="btn btn-danger btn-lg btn-block" onclick="CalculateMargin()">Calculate</button>
+  <form class="form-control text-center w-50 mt-5 mx-auto text-dark">
+    <div>
+      <h2>Margin Calculator</h2>
     </div>
-    <div class="card-footer border-danger text-light bg-danger">Result</div>
-    <div class="bg-dark">
-        <p class="card-text ml-1 text-light post_commission_rate"></p>
-        <p class="card-text ml-1 text-light margin"> </p>
-        <p class="card-text ml-1 text-light margin_percentage"></p>
+    <div class="form-group mt-5 ">
+      <label for="exampleInputEmail1">Enter the employee's CONE rate</label>
+      <input  type="number" class="form-control cost_per_day"  aria-describedby="emailHelp" placeholder="CONE Rate">
+      <small id="emailHelp" class="form-text text-muted">CONE rates are regularly updated, so please ensure that an up to date CONE rate is used</small>
+    </div>
+    <div class="form-group mt-5">
+      <label for="exampleInputPassword1">Full Charge Rate to Network Rail</label>
+      <input type="number" class="form-control full_rate"  placeholder="Enter rate">
+      <small id="emailHelp" class="form-text text-muted">This is the rate charged to Network Rail, and is not the post-commision rate</small>
+    </div>
+  
+    <button type="button" class="btn btn-dark mt-5" onclick="CalculateMargin()">Calculate</button>
+
+  
+    <div class="mt-5">
+        <p class="card-text ml-1 text-dark post_commission_rate"></p>
+        <p class="card-text ml-1 text-dark margin"> </p>
+        <p class="card-text ml-1 text-dark margin_percentage"></p>
       </div>
   </div>
-
-  <!-- <div class="plcalculate">
-    <h1>Margin Calculator</h1>
-    <p>
-        Cost Per Day :
-        <input class="cost_per_day" type="number" />
-    </p>
-
-    <p>
-        Full Rate :
-        <input class="full_rate" type="number" />
-    </p>
-
-    <button onclick="CalculateMargin()">Calculate</button>
-  
-    <h2 class="post_commission_rate"></h2>
-    <h2 class="margin"></h2>
-    <h2 class="margin_percentage"></h2>
-  
-</div> -->
+  </form>
 
 
 {% endblock %}

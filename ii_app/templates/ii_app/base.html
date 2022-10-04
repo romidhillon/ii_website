@@ -38,7 +38,7 @@
             <ul class="navbar-nav ms-auto">
 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/ii_app/"
+                <a class="nav-link" href="/ii_app/"
                   >Home
                 </a>
               </li>
@@ -99,6 +99,22 @@
                 </ul>
                 
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="/login"
+                  >Logout
+                </a>
+              </li>
+
+              {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="/ii_app/"
+                  >Login
+                </a>
+              </li>
+
+              {% endif %}
 
 
             </ul>

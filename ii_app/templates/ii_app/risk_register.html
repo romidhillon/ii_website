@@ -2,11 +2,13 @@
 
 {% block body %}
 
-<table class="table align-middle mb-0 mt-5">
-  <thead class="bg-light">
+
+<table class="table flex-d align-middle mb-0 mt-5">
+  <thead class="bg-light ">
     <tr class="">
       <th scope="">Project Code</th>
-      <th scope="">Risk Id</th>
+      <th scope="">Project Name</th>
+      <th scope="">Resource</th>
       <th scope="">Risk Description</th>
       <th scope="">Impact</th>
       <th scope="">Probability</th>
@@ -20,7 +22,8 @@
   <tbody>
     <tr class="">
       <th scope="row">{{item.project.code}}</th>
-      <td>{{item.id}}</td>
+      <td>{{item.project.title}}</td>
+      <td>{{item.resource.name}}</td>
       <td>{{item.description}}</td>
       <td>{{item.impact}}</td>
       <td>{{item.probability}}</td>

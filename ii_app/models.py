@@ -26,7 +26,9 @@ class Project(models.Model):
          return self.code
 
 class Resource (models.Model):
+    project = models.ForeignKey(Project, on_delete=models.DO_NOTHING)
     name = models.CharField (max_length=200)
+    amey_position = models.CharField(max_length=100)
     skillset = models.CharField (max_length=500)
     cone_rate = models.FloatField()
     image = models.ImageField()
@@ -69,12 +71,14 @@ class Booking (models.Model):
     hours = models.FloatField()
 
     def __str__(self):
-        return str((self.hours, self.assignment.resource.name, self.assignment.position))
+        return str((self.hours, self.assignment.resource.name, self.assignment.position, 
+        self.assignment.resource.project.title, self.day, self.assignment.resource.project.code))
 
 class Invoice (models.Model):
     project = models.ForeignKey(Project, on_delete=models.DO_NOTHING)
     start = models.DateField()
     end = models.DateField()
+    value = models.FloatField()
     document = models.ImageField()
     
     def __str__(self):
@@ -92,7 +96,7 @@ class Risk(models.Model):
     date_opened = models.DateField()
 
     def __str__(self):
-                return self.project.id
+                return self.id
 
 
 # from ast import Delete

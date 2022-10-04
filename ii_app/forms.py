@@ -9,10 +9,11 @@ from .choices import risk_owner_choices
 class RiskForm(forms.ModelForm):
     class Meta:
         model = Risk 
-        fields = ['project','description','impact','probability',
+        fields = ['project', 'resource','description','impact','probability',
                   'mitigation','owner','status','date_opened']
         widgets = {
             'project':forms.Select(attrs={'class':'form-control'}),
+            'resource':forms.Select(attrs={'class':'form-control'}),
             'description': forms.Textarea(attrs = {'class':'form-control', 'rows': '3'}),
             'impact': forms.Select(attrs = {'class':'form-control'}, choices= risk_impact_choices),
             'probability': forms.Select(attrs = {'class':'form-control'}, choices= risk_probability_choices),

@@ -118,7 +118,7 @@ form{
 
 .card-img-top {
     width: 100%;
-    height: 20vw;
+    height: 25vw;
     object-fit: cover;
     
 }
@@ -138,8 +138,9 @@ form{
   }
 
 .table {
-    margin-left: 5%;
-}
+    margin: auto;
+    width: 97% !important; 
+ }
 
 
 .login-image {
@@ -156,3 +157,4 @@ form{
     height: 100%;
     background-size: 100% 100%;
 }
+
