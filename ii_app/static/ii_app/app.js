@@ -17,4 +17,12 @@ function CalculateMargin() {
     marginPercentageElement.innerText = "Margin Percentage : " + marginPercentage.toFixed(2)
 }
 
+function margin () {
+
+    const chargeRate = document.querySelector(".rate").value
+    const cone = document.querySelector(".cone").value
+    
+
+}
+
 // function to calculate the life to date value

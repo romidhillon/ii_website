@@ -15,21 +15,21 @@
 
   {%block body%}
 
-  {% for item in employee %}
+  {% for item1, item2 in project_and_resources %}
   <!-- to make the bootstrap cards appear horizontally rather than vertically -->
 
   {% if forloop.counter0|divisibleby:4 %} <div class="row"> {%  endif %}
 
     <div class="col-xl-3 col-lg-4 col-md-6">
       <div class="card bg-light text-center mt-5 border-1 " style="width:80%; margin-left: 10%;">
-        <img class=" card-img-top img-responsive" src="{{item.image.url}}" alt="image" style=" width: 100%;">
+        <img class=" card-img-top img-responsive" src="{{item1.image.url}}" alt="image" style=" width: 100%;">
         <div class="card-body bg-dark">
-          <a class="resource-text" href="/ii_app/resources/{{item.id}}">{{item.name}}</a>
+          <a class="resource-text" href="/ii_app/resources/{{item2.id}}/{{item1.id}}/">{{item1.name}}</a>
         </div>
       </div>
     </div>
 
-    {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><br>{%  endif %}
+   {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><br>{%  endif %}
 
   {% endfor %}
 

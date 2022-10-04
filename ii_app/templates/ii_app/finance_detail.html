@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-sm">
       <div class="card text-center mt-3">
@@ -50,7 +50,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
@@ -59,18 +59,18 @@
     <thead class="bg-light">
       <tr class="">
         <th scope="">Project Code</th>
-        <th scope="">Invoice Value</th>
-        <th scope="">Invoice Number</th>
-        <th scope="">Date</th>
+        <th scope="">Period Start</th>
+        <th scope="">Period End</th>
+        <th scope="">Document</th>
       </tr>
     </thead>
     {% for item in invoice_values %}
     <tbody>
       <tr class="">
         <th scope="row">{{item.project.code}}</th>
-        <td>{{item.value}}</td>
-        <td>{{item.number}}</td>
-        <td>{{item.date}}</td>
+        <td>{{item.start}}</td>
+        <td>{{item.end}}</td>
+        <td>{{item.document}}</td>
       </tr>
 </div>
 
