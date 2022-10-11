@@ -1,19 +1,18 @@
 {% extends 'ii_app/base.html' %}
+{% block pagetitle %} Risk Entry {% endblock %}
 
 
-{% block body %}
+{% block main %}
 
-<div class="form-group">
-    <p class="text-center mt-5 bg-dark text-light font-weight-light w-75 mx-auto rounded h3" style="height: 50px;">Risk Input Form</p>
-    <form class="form-control mt-0 w-75 mx-auto border border-danger border-3 bg-dark text-light"" method="POST">
+<div class="risk-form">
+    <h4 class="" ">Risk Input Form</h4>
+    <form class="risk-form" method="POST">
             {% csrf_token %}
             {{form.as_p}}
             <!-- <button type="submit">Save</button> -->
             <div class="button-container">
                 <button class="btn btn-outline-light " href = "/ii_app/riskregister/" align="center" style="width:30%" align type="submit">Save</button>
             </div>
-        </div>
-
     </form>
 
 </div>

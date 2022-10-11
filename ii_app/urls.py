@@ -27,5 +27,7 @@ urlpatterns = [
     path('finances/<str:code>/', views.finance_detail, name='finance_detail'),
     
     path('cv/', views.cv, name='cv'),
+    
+    path('api/', views.api, name='api'),
 ]
 

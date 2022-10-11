@@ -1,7 +1,9 @@
+from calendar import c
 from django.shortcuts import render, redirect 
 from django.shortcuts import HttpResponse
 from django.template import loader
 from django.db.models import Sum
+import requests
 
 from ii_app.forms import RiskForm 
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
@@ -11,7 +13,14 @@ from .forms import RiskForm
 # Create your views here.
 
 def main(request):
-    return render (request, 'ii_app/home.html')
+    resource_names = Resource.objects.all()
+    assignment_rate = Assignment.objects.all()
+    context = {
+        'resource_names': resource_names,
+        'assignment_rate': assignment_rate,
+    }
+    return render (request, 'ii_app/home.html',context)
+
 
 
 def resources(request):
@@ -115,3 +124,12 @@ def cv(request):
     }
 
     return render (request, 'ii_app/cv.html', context)
+
+
+def api(request):
+   
+    api = requests.get('https://api.covid19api.com/countries').json()
+    context = {
+        'api':api
+    }
+    return render (request, 'ii_app/api.html', context)

@@ -1,15 +1,17 @@
 {% extends 'ii_app/base.html' %}
+{% block pagetitle %} Finances {% endblock %}
 
-{% block body %}
+{% block main %}
 
 {% for item in project_and_employee_names %}
-<div class="row mt-5">
-    <div class="col-4 mx-auto">
-      <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" 
-           href="/ii_app/finances/{{item.code}}/" role="tab" aria-controls="home">{{item.code}} - {{item.title}} </a>
-      </div>
-    </div>
+
+  <li class="finance-link">
+    <a href="/ii_app/finances/{{item.code}}/">{{item.code}} - {{item.title}} </a>
+  </li>
+
+
 
 {% endfor %}
 {% endblock %}
+
+

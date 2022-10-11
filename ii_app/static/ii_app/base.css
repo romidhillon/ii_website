@@ -1,0 +1,271 @@
+* {
+    outline: 1px solid red;
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'nav    main'
+        'footer footer';
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 15rem 1fr;
+}
+
+.dashboard {
+        margin: 0;
+        display: grid;
+        grid-template-areas:
+            'visual1 visual2 visual3'
+            'visual4 visual5 visual6';
+        grid-template-rows: 30rem 40rem ;
+        grid-template-columns: 40rem 30rem 30rem;
+}
+
+.dashboard {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #292b2c ;
+}
+
+nav {
+    grid-area: nav;
+    padding-left: 2rem;
+    padding-top: 5rem;
+    background-color: #292b2c
+}
+
+main {
+    grid-area: main;
+    padding: 1rem;
+}
+
+footer {
+    grid-area: footer;
+    padding: 3rem;
+    background-color: #292b2c
+}
+
+.logo {
+    margin-left: 40px;
+}
+
+.brand h1 {
+    
+    margin-left: 250px ;
+    margin-right: 0 ;
+    margin-top: 0 ;
+    margin-bottom: 0 ;
+    font-size: 1.5rem;
+    color:darkgrey;
+}
+
+.brand h1 span {
+    
+    margin-left:0.5rem;
+    font-size: 1.5rem;
+    color:#d70b52
+
+}
+
+.auth {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 2.5rem;
+}
+
+.nav-links .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links .nav-link i {
+    font-size: 50px;
+    color: darkgrey;
+}
+
+.nav-links .nav-link i:hover {
+    color: #d70b52
+}
+
+.nav-links .nav-link a {
+   color: darkgrey;
+   text-decoration: none;
+}
+.nav-links .nav-link a:hover {
+    color: #d70b52
+}
+
+
+
+
+
+
+
+.resource-text{
+    color: #E0E0E0;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.resource-text:hover{
+    color: #d70b52;
+    text-decoration: none;
+}
+
+.resource-text::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #d70b52;
+    width: 0%;
+    content: "";
+    height: 7px;
+    transition: all 0.5s;
+  }
+
+.resource-text:hover::after {
+width: 100%;
+}
+
+.resource-text hover{
+    color:#d70b52
+}
+
+.card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
+
+.button-container {
+    margin-left: 43%;
+}
+
+
+.table {
+    margin: auto;
+    width: 97% !important; 
+ }
+
+
+.login-image {
+    background-image: url("../ii_app/images/amey1.png");
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+}
+
+.sign-up-image{
+    background-image: url("../ii_app/images/amey2.png");
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+}
+
+
+.register-table{
+
+margin-left: 18%;
+margin-top: 2%;
+}
+
+
+.logout-item{
+    padding-top: 15px;
+}
+
+.logout-item-2{
+    margin-top: 0px;
+}
+
+
+.login {
+    margin-bottom: 5%;
+    margin-left: 100%;
+}
+
+.resource-card {
+    width: 80%;
+    margin-left: 30px;
+}
+
+.finance-link {
+
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 20px;
+    background-color: #292b2c;
+    border-radius: 2em;
+    width: 50%;
+    justify-content: center;
+    margin-left: 350px;
+}
+
+.finance-link:hover {
+
+    background-color: #d70b52;
+}
+
+.finance-link a{
+    text-decoration: none;
+    display: flex;
+    color: #E0E0E0;
+    text-align: center;
+    list-style-type: none;
+    gap: 5rem;
+    
+}
+
+
+.finance-link a:hover {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.risk-form{
+
+background-color: #292b2c;
+padding-left: 2rem;
+padding-right: 2rem;
+padding-bottom: 2rem;
+color: darkgrey;
+}
+
+.risk-form h4{
+
+    text-align: center;
+    }
+
+
