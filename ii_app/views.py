@@ -14,12 +14,22 @@ from .forms import RiskForm
 
 def main(request):
     resource_names = Resource.objects.all()
+    count_of_resources = Resource.objects.count()
+    count_of_projects = Project.objects.count()
     assignment_rate = Assignment.objects.all()
+    open_risks = Risk.objects.filter(status = 'Open').count()
+    date_filter = Booking.objects.filter(day__gte='2022-03-01', day__lte='2019-03-09')
+    sum_of_hours = sum(date_filter)
+    
     context = {
         'resource_names': resource_names,
         'assignment_rate': assignment_rate,
+        'count_of_projects': count_of_projects,
+        'count_of_resources': count_of_resources,
+        'open_risks': open_risks,
+        'sum_of_hours': sum_of_hours,
     }
-    return render (request, 'ii_app/home.html',context)
+    return render (request, 'ii_app/dashboard.html',context)
 
 
 
@@ -102,12 +112,14 @@ def finances(request):
 
 def finance_detail (request, code):
     invoice_values = Invoice.objects.filter(project__code = code)
+    
     sum_of_invoice_values = Invoice.objects.aggregate(Sum=Sum('value'))['Sum']
 
     hours = (Booking.objects.values("assignment__resource__project__code").annotate(sum=Sum('hours'))[0]['sum'])
     charge_rate = int(Booking.objects.values("assignment__rate")[0].get('assignment__rate'))
    
     life_to_date =  charge_rate * hours
+
     
     context = {
         'invoice_values':invoice_values,

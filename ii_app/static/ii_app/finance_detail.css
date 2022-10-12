@@ -1,11 +1,10 @@
 
 *{
-      /* outline: 1px solid red; */
-      box-sizing: border-box;
+    outline: 1px solid red;
+    box-sizing: border-box;
 }
 
-
-.dashboard {
+.finance-detail {
     margin: 0;
     display: grid;
     grid-template-areas:
@@ -18,10 +17,10 @@
     margin-top: 10px;
 }
 
-.dashboard .card {
-    padding: 20px;
+.finance-detail .card {
     display: flex;
-    
+    padding: 20px;
+
 }
 
 .card-heading {
@@ -39,7 +38,7 @@
     align-items: center;
     justify-content: center;
     height: 20vh;
-    font-size:40px;
+    font-size:35px;
     opacity: 0.7;
 }
 
@@ -73,7 +72,7 @@
 .metrics4 i{
     color: green;
     position: absolute;
-    margin-left: 200px;
+    margin-left: 250px;
     stroke: black;
     stroke-width: 20;
    

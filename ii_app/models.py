@@ -8,6 +8,7 @@ from .choices import risk_probability_choices
 # from django.contrib.auth.models import User
 from .choices import risk_impact_choices
 
+
 # Create your models here.
 
 

@@ -1,0 +1,27 @@
+.cv-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+.cv-table tr:hover {
+    color: #d70b52;
+    background-color: lightgray;
+}
+
+.cv-table img {
+    border-radius: 10px;
+}
+
+.cv-table-descriptions{
+    width: 500px;
+    height: 100px;
+    
+}
+
+.cv-table-descriptions i{
+    font-size: 50px;
+}

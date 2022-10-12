@@ -1,47 +1,60 @@
 {% extends 'ii_app/base.html' %}
 {% block pagetitle %} CV Library {% endblock %}
+{% load static %}
 
-{% block main %}
+{% block styles %}
 
+<link rel="stylesheet" href="{% static 'ii_app/cv.css' %}">
 
-<table class="table table-cv w-75  mt-5">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col">Skillsets</th>
-        <th scope="col">Grade</th>
-        <th scope="col">CV</th>
-      </tr>
-    </thead>
+{% endblock %}
 
-    {% for item in resource %}
-    <tbody>
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+{% endblock %}
+
+{% block main %} 
+
+  <table class="cv-table">
+    <tr class="cv-table-rows">
+      <th>Image</th>
+      <th>Name</th>
+      <th>Skillsets</th>
+      <th>Grade</th>
+      <th>File</th>
+    </tr>
   
-      <tr >
-        <th scope="row" style="width: 15%">
-            <img
-              src="{{item.image.url}}"
-              style="width:4rem"
-              class="rounded-circle"
-            />
-        </th>
-        <td class="align-middle" style="width: 15%">{{item.name}}</td>
-        <td class="align-middle" style="width: 30%">{{item.skillset}}</td>
-        <td class="align-middle" style="width: 15%">{{item.amey_position}}</td>
-        <td class="align-middle" style="width: 15%"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-            <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
-          </svg></i></td>
-      </tr>
-      </tr>
+    {% for item in resource %}
+    <tr class="cv-table-rows">
+      <td class="cv-table-descriptions"><img src={{item.image.url}} style="width: 10rem;" alt=""></td>
+      <td class="cv-table-descriptions">{{item.name}}</td>
+      <td class="cv-table-descriptions">{{item.skillset}}</td>
+      <td class="cv-table-descriptions">{{item.amey_position}}</td>
+      <td class="cv-table-descriptions"><i class='bx bx-news' ></i></td>
 
-
-
-    </tbody>
-
+    </tr>
     {% endfor %}
+    
   </table>
 
 
 {% endblock %}
+
+
+<table id="cv-table">
+  <tr class="cv-table-rows">
+    <th>Image</th>
+    <th>Name</th>
+    <th>Skillsets</th>
+    <th>Grade</th>
+    <th>File</th>
+  </tr>
+
+  {% for item in resource %}
+  <tr class="cv-table-rows">
+    <td class="cv-table-descriptions">Alfreds Futterkiste</td>
+    <td class="cv-table-descriptions">Maria Anders</td>
+    <td class="cv-table-descriptions">Germany</td>
+  </tr>
+  {% endfor %}
+  
+</table>

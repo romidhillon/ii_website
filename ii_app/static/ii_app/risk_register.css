@@ -1,0 +1,40 @@
+.register-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+.register-table  {
+    border-bottom: 1px solid #d70b52;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    font-size: small;
+  
+}
+
+.register-table th  {
+
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    font-size: small;
+  
+}
+.register-table tr  {
+    border-bottom: 1px solid #d70b52;
+
+}
+
+.register-table tr:hover {
+    color: #d70b52;
+    background-color: lightgray;
+}
+
+td {
+    width: 400px;
+    text-align: center;
+}

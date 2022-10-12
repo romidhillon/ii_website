@@ -1,38 +1,50 @@
 {% extends 'ii_app/base.html' %}
 {% block pagetitle %} Risk Register {% endblock %}
+{% load static %}
 
-{% block main %}
-<table class="table register-table flex-d align-middle w-75 mb-0mt-5">
-  <thead class="bg-light ">
-    <tr class="">
-      <th scope="">Project Code</th>
-      <th scope="">Project Name</th>
-      <th scope="">Resource</th>
-      <th scope="">Risk Description</th>
-      <th scope="">Impact</th>
-      <th scope="">Probability</th>
-      <th scope="">Mitigation</th>
-      <th scope="">Owner</th>
-      <th scope="">Status</th>
-      <th scope="">Date Opened</th>
-    </tr>
-  </thead>
-  {% for item in risk_register %}
-  <tbody>
-    <tr class="">
-      <th scope="row">{{item.project.code}}</th>
-      <td>{{item.project.title}}</td>
-      <td>{{item.resource.name}}</td>
-      <td>{{item.description}}</td>
-      <td>{{item.impact}}</td>
-      <td>{{item.probability}}</td>
-      <td>{{item.mitigation}}</td>
-      <td>{{item.owner}}</td>
-      <td>{{item.status}}</td>
-      <td>{{item.date_opened}}</td>
-    </tr>
+{% block styles %}
 
-{% endfor %}
+<link rel="stylesheet" href="{% static 'ii_app/risk_register.css' %}">
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+{% endblock %}
+
+{% block main %} 
+
+    <table class="register-table">
+      <tr class="register-table-rows">
+        <th class="heading-1" >Project Code</th>
+        <th class="heading-2" >Project Name</th>
+        <th class="heading-3" >Resource</th>
+        <th class="heading-4" >Risk Description</th>
+        <th class="heading-5" >Impact</th>
+        <th class="heading-6" >Probability</th>
+        <th class="heading-7" >Mitigation</th>
+        <th class="heading-8" >Owner</th>
+        <th class="heading-9" >Status</th>
+        <th class="heading-10" >Date Opened</th>
+      </tr>
+    
+      {% for item in risk_register %}
+      <tr class="register-table-rows">
+        <td class="description-1">{{item.project.code}}</th>
+        <td class="description-2">{{item.project.title}}</td>
+        <td class="description-3">{{item.resource.name}}</td>
+        <td class="description-4">{{item.description}}</td>
+        <td class="description-5">{{item.impact}}</td>
+        <td class="description-6">{{item.probability}}</td>
+        <td class="description-7">{{item.mitigation}}</td>
+        <td class="description-8">{{item.owner}}</td>
+        <td class="description-9">{{item.status}}</td>
+        <td class="description-10">{{item.date_opened}}</td>
+        {% endfor %}
+      </tr>
+
+    
+    </table>
 
 {% endblock %}
 

@@ -1,36 +1,64 @@
 {% extends 'ii_app/base.html' %}
+{% load static %}
 
+{% block styles %}
 
-{%block main%}
+<link rel="stylesheet" href="{% static 'ii_app/dashboard.css' %}">
 
-    
-      <div class="card text-center mt-5 w-75 resource-card">
-          <div class="card-header">
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+{% endblock %}
+
+{% block main %} 
+
+    <div class="card">
               Assignment Start Date: {{assignment.start}}
-            </div>
-            <div class="card-body">
-                
-                
+    
                 <h5 class="card-title">Employee Name:{{resource.name}}</h5>
                 <h5 class="card-title">Project Code:{{resource.project.code}}</h5>
                 <h5 class="card-title">Project Name: {{resource.project.title}}</h5>
-                <h5 class="card-title rate">Charge Rate: £{{assignment.rate}}</h5>
-                <h5 class="card-title cone">Charge Rate: £{{resource.cone_rate}}</h5>
-              
+                <h5 class="card-title">Charge Rate: £{{assignment.rate}}</h5>
+                <h5 class="card-title">Charge Rate: £{{resource.cone_rate}}</h5>
+        
+        
 
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            
-
-            </div>
-            <div class="card-footer text-muted">
                 Assignment Start Date: {{assignment.end}}
-            </div>
+ 
         </div>
 
 
     
 {%endblock%}
 
+
+
+<div class="dashboard">
+
+    <div class="card card1">
+        <h5 class="card-heading">Number of Live Projects</h5>
+        <div class="metrics metrics1">{{count_of_projects}}  <i class='bx bxs-color'></i></div>
+     
+    </div>
+
+    <div class="card card2">
+        <h5 class="card-heading">Number of Engaged Resources</h5>
+        <div class="metrics metrics2">{{count_of_resources}} 
+        <i class='bx bxs-group' ></i>
+    </div>
+        
+    </div>
+
+    <div class="card card3">
+        <h5 class="card-heading">Number of Open Risks</h5>
+        <div class="metrics metrics3">{{open_risks}} <i class='bx bx-error-alt' ></i></div>
+    </div>
+
+    <div class="card card4">
+        <h5 class="card-heading">Sum of booked hours (this month)</h5>
+        <div class="metrics metrics4">{{sum_of_hours}} <i class='bx bxs-data'></i></div>
+    </div>
 
 
 

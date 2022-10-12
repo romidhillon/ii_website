@@ -1,4 +1,5 @@
 {% extends 'ii_app/base.html' %}
+{% block pagetitle %} Dashboard {% endblock %}
 {% load static %}
 
 {% block styles %}
@@ -14,6 +15,31 @@
 {% block main %} 
 
     <div class="dashboard">
+
+    <div class="card card1">
+        <h5 class="card-heading">Number of Live Projects</h5>
+        <div class="metrics metrics1">{{count_of_projects}}  <i class='bx bxs-color'></i></div>
+     
+    </div>
+
+    <div class="card card2">
+        <h5 class="card-heading">Number of Engaged Resources</h5>
+        <div class="metrics metrics2">{{count_of_resources}} 
+        <i class='bx bxs-group' ></i>
+    </div>
+        
+    </div>
+
+    <div class="card card3">
+        <h5 class="card-heading">Number of Open Risks</h5>
+        <div class="metrics metrics3">{{open_risks}} <i class='bx bx-error-alt' ></i></div>
+    </div>
+
+    <div class="card card4">
+        <h5 class="card-heading">Sum of booked hours (this month)</h5>
+        <div class="metrics metrics4">{{sum_of_hours}} <i class='bx bxs-data'></i></div>
+    </div>
+
 
     <div class="visual1" style="order:1"
         <h4 class="">Charge rate per resource</h4>

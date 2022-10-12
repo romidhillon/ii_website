@@ -1,8 +1,7 @@
 * {
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     box-sizing: border-box;
 }
-
 
 body {
     margin: 0;
@@ -16,15 +15,6 @@ body {
     grid-template-columns: 15rem 1fr;
 }
 
-.dashboard {
-        margin: 0;
-        display: grid;
-        grid-template-areas:
-            'visual1 visual2 visual3'
-            'visual4 visual5 visual6';
-        grid-template-rows: 30rem 40rem ;
-        grid-template-columns: 40rem 30rem 30rem;
-}
 
 .dashboard {
     text-align: center;
@@ -189,13 +179,6 @@ width: 100%;
 }
 
 
-.register-table{
-
-margin-left: 18%;
-margin-top: 2%;
-}
-
-
 .logout-item{
     padding-top: 15px;
 }
@@ -267,5 +250,35 @@ color: darkgrey;
 
     text-align: center;
     }
+
+.cv-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+.cv-table tr:hover {
+    color: #d70b52;
+    background-color: lightgray;
+}
+
+.cv-table img {
+    border-radius: 10px;
+}
+
+.cv-table-descriptions{
+    width: 500px;
+    height: 100px;
+    
+}
+
+.cv-table-descriptions i{
+    font-size: 50px;
+}
+
+
 
 
