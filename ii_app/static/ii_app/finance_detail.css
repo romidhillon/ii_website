@@ -1,6 +1,6 @@
 
 *{
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     box-sizing: border-box;
 }
 
@@ -10,11 +10,11 @@
     grid-template-areas:
         'visual1 visual2 visual3 visual4'
         'visual5 visual6 visual7 visual8';
-    grid-template-rows: 10rem 20rem ;
+    grid-template-rows: 12rem 12rem ;
     grid-template-columns: auto auto auto auto;
     gap: 30px;
     row-gap: 40px;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 .finance-detail .card {
@@ -77,6 +77,30 @@
     stroke-width: 20;
    
 }
+.metrics5 i{
+    color: black;
+    position: absolute;
+    margin-left: 250px;
+    stroke: black;
+    stroke-width: 20;
+   
+}
+.metrics6 i{
+    color: green;
+    position: absolute;
+    margin-left: 250px;
+    stroke: black;
+    stroke-width: 20;
+   
+}
+.metrics7 i{
+    color: green;
+    position: absolute;
+    margin-left: 250px;
+    stroke: black;
+    stroke-width: 20;
+   
+}
 
 .card1 {
     border-left:3px solid gold ;
@@ -88,6 +112,15 @@
     border-left:3px solid #d70b52 ;
 }
 .card4 {
+    border-left:3px solid green ;
+}
+.card5 {
+    border-left:3px solid black ;
+}
+.card6 {
+    border-left:3px solid green ;
+}
+.card7 {
     border-left:3px solid green ;
 }
 

@@ -16,21 +16,33 @@
 
   {%block main%}
 
-  {% for item1, item2 in project_and_resources %}
+  <div class="search ">
+    <div class="input-group">
+      <div class="form-outline">
+        <form action="" method="GET" class="d-flex">
+          <input type="text" name="query" id="form1" class="form-control rounded" aria-label="Search"/>
+          <button type="submit" class="btn btn-outline-primary">search</button>
+        </form>
+        </div>
+    </div>
+  </div>
+
+  {% for item in resource %}
+
   <!-- to make the bootstrap cards appear horizontally rather than vertically -->
 
   {% if forloop.counter0|divisibleby:4 %} <div class="row"> {%  endif %}
 
     <div class="col-xl-3 col-lg-4 col-md-6">
-      <div class="card resource-card bg-light text-center mt-5 border-2 "">
-        <img class=" card-img-top img-responsive" src="{{item1.image.url}}" alt="image" style=" width: 100%;">
+      <div class="card resource-card bg-light text-center mt-5 border-2 ">
+        <img class=" card-img-top img-responsive" src="{{item.image.url}}" alt="image" style=" width: 100%;">
         <div class="card-body bg-dark">
-          <a class="resource-text" href="/ii_app/resources/{{item2.id}}/{{item1.id}}/">{{item1.name}}</a>
+          <a class="resource-text" href="/ii_app/resources/{{item.name}}">{{item.name}}</a>
         </div>
       </div>
     </div>
 
-   {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><br>{%  endif %}
+   {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><br>{% endif %}
 
   {% endfor %}
 

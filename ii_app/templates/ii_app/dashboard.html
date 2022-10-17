@@ -40,10 +40,12 @@
         <div class="metrics metrics4">{{sum_of_hours}} <i class='bx bxs-data'></i></div>
     </div>
 
+    </div>
 
+    <div class="dashboard-2">
     <div class="visual1" style="order:1"
         <h4 class="">Charge rate per resource</h4>
-        <canvas id="myChartss" width="400" height="200" ></canvas>
+        <canvas id="myChartss" width="500" height="200" ></canvas>
         <script>
             const ctx3 = document.getElementById('myChartss').getContext('2d');
             const myChartss = new Chart(ctx3, {
@@ -51,7 +53,7 @@
                 data: {
                     labels: [{% for data in resource_names %} '{{data.name}}',{% endfor %}],
                     datasets: [{
-                        label: '# of Votes',
+                        // label: '# of Votes',
                         data: [{% for data in assignment_rate %} '{{data.rate}}',{% endfor %}],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -69,10 +71,15 @@
                             'rgba(153, 102, 255, 1)',
                             'rgba(255, 159, 64, 1)'
                         ],
-                        borderWidth: 3
+                        borderWidth: 2
                     }]
                 },
                 options: {
+                    plugins: {
+                        legend:{
+                            display:false
+                        }
+                    },
                     scales: {
                         y: {
                             beginAtZero: true
@@ -89,7 +96,7 @@
     <div class="visual2" style="order:2"
       
     <h4 class="">Charge rate per resource</h4>
-    <canvas id="myChartsss" width="300" height="200" ></canvas>
+    <canvas id="myChartsss" width="400" height="200" ></canvas>
     <script>
         const ctx4 = document.getElementById('myChartsss').getContext('2d');
         const myChartsss = new Chart(ctx4, {
@@ -133,10 +140,10 @@
     </div>
 
 
-    <div class="visual3" style="order:2"
+    <div class="visual3" style="order:3">
       
     <h4 class="">Charge rate per resource</h4>
-    <canvas id="myChartssss" width="300" height="200" ></canvas>
+    <canvas id="myChartssss" width="400" height="200" ></canvas>
     <script>
         const ctx5 = document.getElementById('myChartssss').getContext('2d');
         const myChartssss = new Chart(ctx5, {
@@ -178,62 +185,8 @@
     </script>
 
     </div>
-
-
-    <div class="visual4" style="order:4"
-      
-    <h4 class="">Charge rate per resource</h4>
-    <canvas id="myChartsssss" width="300" height="200" ></canvas>
-    <script>
-        const ctx6 = document.getElementById('myChartsssss').getContext('2d');
-        const myChartsssss = new Chart(ctx6, {
-            type: 'pie',
-            data: {
-                labels: [{% for data in resource_names %} '{{data.name}}',{% endfor %}],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [{% for data in assignment_rate %} '{{data.rate}}',{% endfor %}],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-              
-        });
-    
-    </script>
-
-    </div>
-
-
-    
-
-
-
-
 </div>
-            
+
 </div>
 
 

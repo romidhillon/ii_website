@@ -1,9 +1,10 @@
 {% extends 'ii_app/base.html' %}
+{% block pagetitle %} Resource Detail {% endblock %}
 {% load static %}
 
 {% block styles %}
 
-<link rel="stylesheet" href="{% static 'ii_app/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'ii_app/resource_detail.css' %}">
 
 {% endblock %}
 
@@ -11,55 +12,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 {% endblock %}
 
-{% block main %} 
-
-    <div class="card">
-              Assignment Start Date: {{assignment.start}}
-    
-                <h5 class="card-title">Employee Name:{{resource.name}}</h5>
-                <h5 class="card-title">Project Code:{{resource.project.code}}</h5>
-                <h5 class="card-title">Project Name: {{resource.project.title}}</h5>
-                <h5 class="card-title">Charge Rate: £{{assignment.rate}}</h5>
-                <h5 class="card-title">Charge Rate: £{{resource.cone_rate}}</h5>
-        
-        
-
-                Assignment Start Date: {{assignment.end}}
- 
+{% block main %}
+{% for item in assignments %}
+        <div class="card">
+            <h5 class="card-heading">Assignment Start Date: {{item.start}}</h5>
+            <h5 class="card-title">Employee Name:{{item.resource.name}}</h5>
+            <h5 class="card-title">Project Code:{{item.position.project.code}}</h5>
+            <h5 class="card-title">Project Name: {{item.position.project.title}}</h5>
+            <h5 class="card-title">Charge Rate: £{{item.rate}}</h5>
+            <h5 class="card-title">Cone Rate: £{{item.resource.cone_rate}}</h5>
+            <h5 class="card-heading">Assignment Start Date: {{item.end}}</h5>
         </div>
 
-
-    
+{% endfor %}
 {%endblock%}
-
-
-
-<div class="dashboard">
-
-    <div class="card card1">
-        <h5 class="card-heading">Number of Live Projects</h5>
-        <div class="metrics metrics1">{{count_of_projects}}  <i class='bx bxs-color'></i></div>
-     
-    </div>
-
-    <div class="card card2">
-        <h5 class="card-heading">Number of Engaged Resources</h5>
-        <div class="metrics metrics2">{{count_of_resources}} 
-        <i class='bx bxs-group' ></i>
-    </div>
-        
-    </div>
-
-    <div class="card card3">
-        <h5 class="card-heading">Number of Open Risks</h5>
-        <div class="metrics metrics3">{{open_risks}} <i class='bx bx-error-alt' ></i></div>
-    </div>
-
-    <div class="card card4">
-        <h5 class="card-heading">Sum of booked hours (this month)</h5>
-        <div class="metrics metrics4">{{sum_of_hours}} <i class='bx bxs-data'></i></div>
-    </div>
-
-
-
 

@@ -2,13 +2,14 @@ from calendar import c
 from django.shortcuts import render, redirect 
 from django.shortcuts import HttpResponse
 from django.template import loader
-from django.db.models import Sum
+from django.db.models import Sum, F
 import requests
+from django.db.models.functions import Coalesce
 
 from ii_app.forms import RiskForm 
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
 from .forms import RiskForm
-
+import datetime
 
 # Create your views here.
 
@@ -32,29 +33,27 @@ def main(request):
     return render (request, 'ii_app/dashboard.html',context)
 
 
-
 def resources(request):
-    resource = Resource.objects.all()
-    assignment = Assignment.objects.all()
-    project_and_resource = zip(resource, assignment)
-  
-
+    query = request.GET.get("query")
+    if query:
+        resource = Resource.objects.filter(name__icontains = query) 
+    else:
+        resource = Resource.objects.all()
     context = {
-        'project_and_resources': project_and_resource ,
+        'resource':resource ,
     }
 
     return render (request, 'ii_app/resources.html', context)
 
 
-def resource_detail(request,id,id_2,):
-    resource= Resource.objects.get(id = id)
-    assignment= Assignment.objects.get(id = id_2)
+def resource_detail(request,name):
+    
+    assignments = Assignment.objects.filter(resource__name = name)
 
     context = {
-        'resource': resource,
-        'assignment': assignment,
-
+        'assignments': assignments ,
     }
+
     return render (request, 'ii_app/resource_detail.html', context)
 
 def risk_form(request):
@@ -98,34 +97,84 @@ def risk_register(request):
 
 
 def margin(request):
+
     return render (request, 'ii_app/margin.html')
 
 
 def finances(request):
     # project_names = Employee.objects.order_by().values('project_name').distinct()
     project_and_employee_names = Project.objects.order_by('code','title').all()
+  
     context = {
         'project_and_employee_names': project_and_employee_names,
     }
     return render (request, 'ii_app/finances.html', context)
 
+    
 
 def finance_detail (request, code):
-    invoice_values = Invoice.objects.filter(project__code = code)
     
-    sum_of_invoice_values = Invoice.objects.aggregate(Sum=Sum('value'))['Sum']
-
-    hours = (Booking.objects.values("assignment__resource__project__code").annotate(sum=Sum('hours'))[0]['sum'])
-    charge_rate = int(Booking.objects.values("assignment__rate")[0].get('assignment__rate'))
-   
-    life_to_date =  charge_rate * hours
-
+    project = Project.objects.get(code=code)
     
+    sum_of_invoice_values = project.invoice_set.aggregate(Sum('value')).get('value__sum')
+ 
+    end = datetime.date.today().replace(day=1)
+  
+    start = (end - datetime.timedelta(days=1)).replace(day=1)
+
+    period_invoicing = project.position_set.filter(
+    assignment__booking__day__gte = start,
+	assignment__booking__day__lt = end).aggregate(
+	sum = Coalesce(Sum(F('assignment__rate') * F('assignment__booking__hours')), 0.00)).get('sum') 
+
+    life_to_date = project.position_set.filter(
+	assignment__booking__day__lt = end).aggregate(
+	sum = Coalesce(Sum(F('assignment__rate') * F('assignment__booking__hours')), 0.00)).get('sum') 
+
+    work_in_progress = (life_to_date - sum_of_invoice_values)
+
+    ''' - for a specific resource on a specific project, we want to find cone rates for each resource
+    - we then want to multiple the cone rate for each resource by the amount of hours that resource has done for a specific project. This will give their total cost on the project 
+    - we then want to get the charge rate for the individual for the project, and then multiple it by the number of hours on the project. 
+    - We then use the formula to calculate the margin 
+    '''
+
+    # project margin calculation
+    cone_rate_dict = project.resource_set.values('cone_rate') # get the cone rate values 
+    cone_rate = cone_rate_dict[0].get('cone_rate')
+    hours = Booking.objects.filter(assignment__position__project = project).aggregate(sum=Coalesce(Sum('hours'),0.00)).get('sum')
+    total_cost = (cone_rate * hours)
+    charge_rate_dict = project.position_set.values('assignment__rate')
+    charge_rate = charge_rate_dict[0].get('assignment__rate')
+    total_charge = (charge_rate * hours)
+    project_margin = round(((total_charge - total_cost)/(total_charge))*100,2) if total_charge else 0
+    
+    #period margin calculation 
+    #period hours 
+    #charge rate 
+
+    period_hours = Booking.objects.filter(assignment__position__project = project).filter(
+    assignment__booking__day__gte = start,
+	assignment__booking__day__lt = end).aggregate(sum = Coalesce(Sum(('assignment__booking__hours')), 0.00)).get('sum')
+
+    cone_rate_dict = project.resource_set.values('cone_rate') 
+    cone_rate = cone_rate_dict[0].get('cone_rate')
+    charge_rate_dict = project.position_set.values('assignment__rate')
+    charge_rate = charge_rate_dict[0].get('assignment__rate')
+    period_total_charge = (charge_rate * period_hours)
+    period_total_cost = (cone_rate * period_hours)
+    period_project_margin = round(((period_total_charge - period_total_cost)/(period_total_charge))*100,2) if period_total_charge else 0
+    
+
     context = {
-        'invoice_values':invoice_values,
         'sum_of_invoice_values':sum_of_invoice_values,
+        'period_invoicing':period_invoicing,
         'life_to_date':life_to_date,
+        'work_in_progress':work_in_progress,
+        'project_margin':project_margin,
+        'period_project_margin':period_project_margin,
     }
+
     return render (request, 'ii_app/finance_detail.html', context)
 
 def cv(request):
@@ -145,3 +194,14 @@ def api(request):
         'api':api
     }
     return render (request, 'ii_app/api.html', context)
+
+def search_bar (request):
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        if query:
+            resources = Resource.objects.filter(name__icontains = query)
+            return render (request, 'ii_app/search_bar.html', {'resources': resources})
+
+    else:
+        print("your query did not return any results")
+        return request (request, 'ii_app/search_bar.html', {})

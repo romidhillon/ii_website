@@ -1,5 +1,5 @@
 * {
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
     box-sizing: border-box;
 }
 
@@ -8,9 +8,9 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-areas:
-        'header header'
-        'nav    main'
-        'footer footer';
+        'header header header'
+        'nav    main main'
+        'footer footer footer';
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 15rem 1fr;
 }
@@ -106,6 +106,10 @@ footer {
 }
 .nav-links .nav-link a:hover {
     color: #d70b52
+}s
+
+.search {
+    display: flex;
 }
 
 

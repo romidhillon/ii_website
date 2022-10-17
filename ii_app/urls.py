@@ -8,9 +8,9 @@ urlpatterns = [
     # ii_app/
     path('', views.main, name=''),
 
-    path('resources', views.resources, name='resources'),
-    
-    path('resources/<int:id>/<int:id_2>/', views.resource_detail, name='resource_detail'),
+    path('resources/', views.resources, name='resources'),
+
+    path('resources/<str:name>/', views.resource_detail, name='resources'),
 
     path('addrisks/', views.risk_form, name='risk_form'),
 
@@ -29,5 +29,7 @@ urlpatterns = [
     path('cv/', views.cv, name='cv'),
     
     path('api/', views.api, name='api'),
+
+    path('search/', views.search_bar, name='search'),
 ]
 
