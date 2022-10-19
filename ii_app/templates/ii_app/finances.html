@@ -3,15 +3,34 @@
 
 {% block main %}
 
-{% for item in project_and_employee_names %}
+<body>
+
+  <body>
+    <div class="search">
+      <div class="input-group">
+        <div class="form-outline">
+          <form action="" method="GET" class="d-flex">
+            <input type="text" name="query" id="form1" class="form-control rounded" placeholder="search for a resource" aria-label="Search"/>
+            <button type="submit" class="btn btn-outline-dark">search</button>
+          </form>
+          </div>
+      </div>
+    </div>
+
+
+
+
+{% for item in projects %}
 
   <li class="finance-link">
     <a href="/ii_app/finances/{{item.code}}/">{{item.code}} - {{item.title}} </a>
   </li>
-
-
-
+{% empty %}
+<p>Search found nothing</p>
 {% endfor %}
+
+
+</body>
 {% endblock %}
 
 

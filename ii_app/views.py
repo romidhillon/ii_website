@@ -2,7 +2,7 @@ from calendar import c
 from django.shortcuts import render, redirect 
 from django.shortcuts import HttpResponse
 from django.template import loader
-from django.db.models import Sum, F
+from django.db.models import Sum, F, Q
 import requests
 from django.db.models.functions import Coalesce
 
@@ -102,21 +102,23 @@ def margin(request):
 
 
 def finances(request):
-    # project_names = Employee.objects.order_by().values('project_name').distinct()
-    project_and_employee_names = Project.objects.order_by('code','title').all()
-  
+
+    query = request.GET.get('query') or ''
+    
+    projects = Project.objects.filter(title__icontains = query).order_by('code','title')
+    
     context = {
-        'project_and_employee_names': project_and_employee_names,
+        'projects': projects,
     }
     return render (request, 'ii_app/finances.html', context)
-
+    
     
 
 def finance_detail (request, code):
     
     project = Project.objects.get(code=code)
     
-    sum_of_invoice_values = project.invoice_set.aggregate(Sum('value')).get('value__sum')
+    sum_of_invoice_values = project.invoice_set.aggregate(value__sum = Coalesce(Sum('value'),0.00)).get('value__sum')
  
     end = datetime.date.today().replace(day=1)
   
@@ -133,11 +135,6 @@ def finance_detail (request, code):
 
     work_in_progress = (life_to_date - sum_of_invoice_values)
 
-    ''' - for a specific resource on a specific project, we want to find cone rates for each resource
-    - we then want to multiple the cone rate for each resource by the amount of hours that resource has done for a specific project. This will give their total cost on the project 
-    - we then want to get the charge rate for the individual for the project, and then multiple it by the number of hours on the project. 
-    - We then use the formula to calculate the margin 
-    '''
 
     # project margin calculation
     cone_rate_dict = project.resource_set.values('cone_rate') # get the cone rate values 
@@ -205,3 +202,15 @@ def search_bar (request):
     else:
         print("your query did not return any results")
         return request (request, 'ii_app/search_bar.html', {})
+
+
+def search_bar_finances (request):
+
+    query = request.GET.get('query')
+    if query:
+        projects = Project.objects.filter(title__icontains = query)
+    
+    else:
+        projects = Project.objects.all()
+
+    return render (request, 'ii_app/search_bar_finances.html', {'projects':projects})

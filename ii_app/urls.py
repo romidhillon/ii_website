@@ -31,5 +31,7 @@ urlpatterns = [
     path('api/', views.api, name='api'),
 
     path('search/', views.search_bar, name='search'),
+
+    path('search_finances/', views.search_bar_finances, name='search_finances'),
 ]
 

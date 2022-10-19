@@ -1,27 +1,26 @@
 {% extends 'ii_app/base.html' %}
 {% block pagetitle %} Resources {% endblock %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block styles %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'ii_app/resources.css' %}">
 
-  <title>Resources</title>
-</head>
+{% endblock %}
 
-<body class="resources-body">
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+{% endblock %}
 
-  {%block main%}
+{% block main %}
 
-  <div class="search ">
+<body>
+  <div class="search">
     <div class="input-group">
       <div class="form-outline">
         <form action="" method="GET" class="d-flex">
-          <input type="text" name="query" id="form1" class="form-control rounded" aria-label="Search"/>
-          <button type="submit" class="btn btn-outline-primary">search</button>
+          <input type="text" name="query" id="form1" class="form-control rounded" placeholder="search for a resource" aria-label="Search"/>
+          <button type="submit" class="btn btn-outline-dark">search</button>
         </form>
         </div>
     </div>
