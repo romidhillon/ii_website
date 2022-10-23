@@ -1,32 +1,29 @@
 {% extends 'ii_app/base.html' %}
-{% block pagetitle %} Finances {% endblock %}
+{% block pagetitle %} Bookings {% endblock %}
 
 {% block main %}
 
 <body>
-
   <body>
     <div class="search">
       <div class="input-group">
         <div class="form-outline">
           <form action="" method="GET" class="d-flex">
-            <input type="text" name="query" id="form1" class="form-control rounded" placeholder="search for a code or name" aria-label="Search"/>
+            <input type="text" name="query" id="form1" class="form-control rounded" placeholder="search for your project" aria-label="Search"/>
             <button type="submit" class="btn btn-outline-dark">search</button>
           </form>
           </div>
       </div>
     </div>
 
-
-{% for item in projects %}
+{% for item in resource_info %}
 
   <li class="finance-link">
-    <a href="/ii_app/finances/{{item.code}}/">{{item.code}} - {{item.title}} </a>
+    <a href="/ii_app/bookings/{{item.position.project.code}}">{{item.position.project.code}} - {{item.resource}} </a>
   </li>
 {% empty %}
 <p>Search found nothing</p>
 {% endfor %}
-
 
 </body>
 {% endblock %}

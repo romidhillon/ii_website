@@ -3,10 +3,13 @@ from django.shortcuts import render, redirect
 from django.shortcuts import HttpResponse
 from django.template import loader
 from django.db.models import Sum, F, Q
-import requests
 from django.db.models.functions import Coalesce
+from datetime import date, timedelta
+from django.contrib import messages
+import requests
 
-from ii_app.forms import RiskForm 
+from ii_app.forms import RiskForm, BookingForm
+from django.forms import modelformset_factory 
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
 from .forms import RiskForm
 import datetime
@@ -88,7 +91,10 @@ def delete_risk_item(request,risk_id):
 
 
 def risk_register(request):
-    risk_register = Risk.objects.all()
+
+    query = request.GET.get('query') or ''
+
+    risk_register = Risk.objects.filter(Q(owner__icontains = query) | Q(status__icontains = query))
 
     context = {
         'risk_register': risk_register,
@@ -134,7 +140,6 @@ def finance_detail (request, code):
 	sum = Coalesce(Sum(F('assignment__rate') * F('assignment__booking__hours')), 0.00)).get('sum') 
 
     work_in_progress = (life_to_date - sum_of_invoice_values)
-
 
     # project margin calculation
     cone_rate_dict = project.resource_set.values('cone_rate') # get the cone rate values 
@@ -203,14 +208,43 @@ def search_bar (request):
         print("your query did not return any results")
         return request (request, 'ii_app/search_bar.html', {})
 
+def bookings (request):
 
-def search_bar_finances (request):
-
-    query = request.GET.get('query')
-    if query:
-        projects = Project.objects.filter(title__icontains = query)
+   query = request.GET.get('query') or ''
     
-    else:
-        projects = Project.objects.all()
+   resource_info = Assignment.objects.filter(Q(resource__name__icontains = query) |Q(position__project__code = query))
+    
+   context = {
+        'resource_info': resource_info,
+    }
+   return render (request, 'ii_app/bookings.html', context)
 
-    return render (request, 'ii_app/search_bar_finances.html', {'projects':projects})
+
+def booking_form(request,code):
+
+    week_start = date.today()
+    week_start -= timedelta(days=week_start.weekday())
+    week_end = week_start + timedelta(days=4)
+
+    form = BookingForm(request.POST or None)
+
+
+    if form.is_valid():
+        form.save()
+        messages.success(request,"Timesheet submitted successfully")
+        return redirect('')
+    # booking_form = modelformset_factory(Booking, fields = ('day', 'hours'), extra =5)
+    
+    # form = booking_form(queryset = Booking.objects.none())
+
+    # if form.is_valid():
+    #     form.save()
+    #     return redirect('')
+
+    context = {
+        'form':form,
+        'week_end':week_end
+ 
+    }
+
+    return render (request, 'ii_app/booking_form.html', context)

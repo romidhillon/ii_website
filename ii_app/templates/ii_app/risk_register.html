@@ -14,6 +14,18 @@
 
 {% block main %} 
 
+<body>
+  <div class="search">
+    <div class="input-group">
+      <div class="form-outline">
+        <form action="" method="GET" class="d-flex">
+          <input type="text" name="query" id="form1" class="form-control rounded" placeholder="search by owner or status" aria-label="Search"/>
+          <button type="submit" class="btn btn-outline-dark">search</button>
+        </form>
+        </div>
+    </div>
+  </div>
+
     <table class="register-table">
       <tr class="register-table-rows">
         <th class="heading-1" >Project Code</th>
@@ -40,11 +52,17 @@
         <td class="description-8">{{item.owner}}</td>
         <td class="description-9">{{item.status}}</td>
         <td class="description-10">{{item.date_opened}}</td>
+
+        {% empty %}
+        <p>Search found nothing</p>
+  
         {% endfor %}
       </tr>
 
     
     </table>
+
+
 
 {% endblock %}
 

@@ -32,6 +32,9 @@ urlpatterns = [
 
     path('search/', views.search_bar, name='search'),
 
-    path('search_finances/', views.search_bar_finances, name='search_finances'),
+    path('bookings/', views.bookings, name='bookings'),
+
+    path('bookings/<str:code>/', views.booking_form, name='booking_form'),
+
 ]
 

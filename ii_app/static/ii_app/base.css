@@ -292,5 +292,17 @@ color: darkgrey;
 }
 
 
+.search{
+    display: flex;
+    align-items: center;
+    margin-left: 1250px;
+    width: 300px;
+    gap: 10px;
+}
+
+
+.form-outline .btn{
+    margin-left: 10px;
+}
 
 

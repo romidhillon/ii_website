@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Risk
+from .models import Booking, Risk
 from attr import attrs
 from .choices import status_choices
 from .choices import risk_impact_choices
@@ -21,7 +21,22 @@ class RiskForm(forms.ModelForm):
             'owner': forms.Select(attrs = {'class':'form-control rows-3'}, choices= risk_owner_choices),
             'status': forms.Select(attrs = {'class':'form-control'}, choices= status_choices ),
             'date_opened': forms.TextInput(attrs = {'class':'form-control'}),
-            }
-  
-   
+            },
+    
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['day','hours']
 
+        widgets = {
+                'day':forms.Select(attrs={'class':'form-control'}),
+                'hours': forms.Select(attrs = {'class':'form-control'}, choices= status_choices ),
+                
+                 },
+    
+
+
+
+  
+
+  

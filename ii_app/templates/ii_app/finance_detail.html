@@ -15,71 +15,6 @@
 
 {% block main %}
 
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="card text-center mt-3">
-        <div class="card-header">
-          Work in Progress (WIP)
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">tbc</h5>
-          <p class="card-text"> The work-in-progress value is the work completed on a project that has not been invoiced yet</p>
-          <a href="#" class="btn btn-primary">placeholder</a>
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card text-center mt-3">
-        <div class="card-header">
-          Life to Date (LTD) Value 
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{life_to_date}}</h5>
-          <p class="card-text">The life-to-date value is the total work completed on the project to date.</p>
-          <a href="#" class="btn btn-primary">placeholder</a>
-        </div>
-        <div class="card-footer text-muted">
-          Calculation: 
-        </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card text-center mt-3">
-        <div class="card-header">
-          Invoicing last period 
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">tbc</h5>
-          <p class="card-text">The life-to-date value is the total work completed on the project to date.</p>
-          <a href="#" class="btn btn-primary">placeholder</a>
-        </div>
-        <div class="card-footer text-muted">
-          Calculation: 
-        </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card text-center mt-3">
-        <div class="card-header">
-          Invoices Sum
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">£{{sum_of_invoice_values}}</h5>
-          <p class="card-text">The sum of invoice values is the sum of all individual invoices issued to the client</p>
-          <a href="#" class="btn btn-primary">placeholder</a>
-        </div>
-        <div class="card-footer text-muted">
-          tbc
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="finance-detail">
 
   <div class="card card1">
@@ -117,33 +52,6 @@
       <div class="metrics metrics7">£{{period_project_margin}}% <i class='bx bxs-data'></i></div>
   </div>
 
-
-
-
-
-  <!-- <div class="col-lg-12 d-flex justify-content-center">
-    <table class="table align-middle mb-0 mt-5 ">
-      <thead class="bg-light">
-        <tr class="">
-          <th scope="">Project Code</th>
-          <th scope="">Period Start</th>
-          <th scope="">Period End</th>
-          <th scope="">Invoice Value</th>
-          <th scope="">Document</th>
-        </tr>
-      </thead>
-      {% for item in invoice_values %}
-      <tbody>
-        <tr class="">
-          <th scope="row">{{item.project.code}}</th>
-          <td>{{item.start}}</td>
-          <td>{{item.end}}</td>
-          <td>£{{item.value}}</td>
-          <td>{{item.document}}</td>
-        </tr>
-  </div>
-  
-  {% endfor %} -->
 
 {% endblock %}
 

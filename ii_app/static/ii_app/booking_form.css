@@ -1,0 +1,47 @@
+*{
+    /* outline: 1px solid red; */
+    box-sizing: border-box;
+}
+
+.booking-header{
+    font-weight: 300;
+}
+
+.booking-form {
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 100;
+
+}
+
+.booking-form-items {
+    display: flex;
+    margin-top: 50px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.break {
+    flex-basis: 100%;
+    margin-top: 20px;
+    height: 0;
+  }
+
+.booking-form-button{
+
+    display: flex;
+    width: 500px;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.booking-day{
+    margin-bottom:20px;
+    font-weight: 400;
+}
+
