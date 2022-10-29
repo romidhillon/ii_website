@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="{% static 'ii_app/base.css' %}" />
   <link rel="stylesheet" href="{% static 'ii_app/style.css' %}" />
-
+  
 
   <!-- Boxicons CSS -->
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -29,6 +29,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alkalami&display=swap" rel="stylesheet" />
+
+  
 
   {% block styles %} {% endblock %}
   {% block scripts %} {% endblock %}
@@ -94,12 +96,15 @@
     {% endblock %}
   </main>
   <footer>
-    <div class="info">
-      <a href="#">Terms & Conditions</a>
-      <a href="#">FAQ</a>
+    <div class="footer-links">
+      <a href="#">Sitemap</a>
+      <a href="#">&copy Amey Advisory & Analytics</a>
       <a href="#">FAQ</a>
     </div>
-    <div class="contact">
+    <div class="social-media">
+      <a href="#"><box-icon name='facebook-circle' type='logo' animation='flashing' color='#d70b52' ></box-icon></a>
+      <a href="#"><box-icon name='instagram' type='logo' color='#d70b52' ></box-icon></a>
+      <a href="#"><box-icon name='twitter' type='logo' animation='tada'  color='#d70b52' ></box-icon></i></a>
     </div>
   </footer>
 </body>

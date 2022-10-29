@@ -1,0 +1,21 @@
+*{
+    /* outline: 1px solid red; */
+    box-sizing: border-box;
+}
+
+
+.risk-form-button {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risk-input-heading {
+    padding: 20px;
+
+}
+
+.risk-form {
+    border-radius: 20px;
+}

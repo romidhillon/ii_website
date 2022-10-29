@@ -30,6 +30,10 @@ header {
     align-items: center;
     padding: 1.5rem;
     background-color: #292b2c ;
+    width: 100%;
+    overflow-x: hidden;
+    padding-right: 120px;
+    
 }
 
 nav {
@@ -75,7 +79,16 @@ footer {
 .auth {
     display: flex;
     gap: 1rem;
+    color: #d70b52;
+
 }
+
+header a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+
 
 .nav-links {
     display: flex;
@@ -175,7 +188,7 @@ width: 100%;
  }
 
 
-.login-image {
+section .login-image {
     background-image: url("../ii_app/images/amey1.png");
     width: 100%;
     height: 100%;
@@ -305,4 +318,45 @@ color: darkgrey;
     margin-left: 10px;
 }
 
+
+footer  {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 50px;
+    text-decoration: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    column-gap: 505px;
+    padding-top: 33px;
+
+}
+
+footer a {
+    color: #d70b52;
+}
+
+footer a:hover {
+    color: grey;
+}
+
+.social-media {
+ 
+    font-size: 1.8em;
+    gap: 50px;
+
+}
+
+
+.footer-links{
+    column-gap: 10px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none ;
+
+}
 

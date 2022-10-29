@@ -99,6 +99,31 @@ class Risk(models.Model):
     def __str__(self):
                 return self.id
 
+# class ResourceForecast(models.Model):
+#     assignment = models.ForeignKey(Assignment, on_delete=models.DO_NOTHING)
+#     forecast_hours = models.FloatField()
+#     actual_hours = models.FloatField()
+#     accrual_hours = models.FloatField()
+#     day = models.DateField()
+
+# class RevenueForecast (models.Model):
+#     assignment = models.ForeignKey(Assignment, on_delete=models.DO_NOTHING)
+#     forecast_hours = models.FloatField()
+#     actual_hours = models.FloatField()
+#     accrual_hours = models.FloatField()
+#     day = models.DateField()
+
+# class Cost (models.Model):
+#     assignment = models.ForeignKey(Assignment, on_delete=models.DO_NOTHING)
+#     forecast = models.FloatField()
+#     actual = models.FloatField()
+#     accrual = models.FloatField()
+#     day = models.DateField()
+
+
+
+
+
 
 # from ast import Delete
 # from django.db import models

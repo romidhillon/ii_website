@@ -6,12 +6,13 @@ from django.db.models import Sum, F, Q
 from django.db.models.functions import Coalesce
 from datetime import date, timedelta
 from django.contrib import messages
+from django.core.paginator import Paginator
 import requests
 
 from ii_app.forms import RiskForm, BookingForm
 from django.forms import modelformset_factory 
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
-from .forms import RiskForm
+from .forms import RiskForm, BookingDate, BookingForm
 import datetime
 
 # Create your views here.
@@ -227,12 +228,14 @@ def booking_form(request,code):
     week_end = week_start + timedelta(days=4)
 
     form = BookingForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Timesheet submitted successfully")
+            return redirect('')
 
-
-    if form.is_valid():
-        form.save()
-        messages.success(request,"Timesheet submitted successfully")
-        return redirect('')
+    forms = BookingDate(request.POST or None)
+    
     # booking_form = modelformset_factory(Booking, fields = ('day', 'hours'), extra =5)
     
     # form = booking_form(queryset = Booking.objects.none())
@@ -243,6 +246,7 @@ def booking_form(request,code):
 
     context = {
         'form':form,
+        'forms':forms,
         'week_end':week_end
  
     }

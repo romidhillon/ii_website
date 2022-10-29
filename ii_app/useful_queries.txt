@@ -97,3 +97,8 @@ pubs = Publisher.objects.annotate(num_books=Count('book')).order_by('-num_books'
 
 // REVERSE FOREIGN KEY LOOKUP - MODEL_NAME_SET 
 // assignment.booking_set.filter(day__lt = end, day__gte = start) 
+
+
+// could write a function that reads in a csv file and inserts the data into the database
+// once i get access to SAP, we can get the export to CSV 
+// This may be a more cost effective method than connecting to SAP API business hub
