@@ -45,3 +45,16 @@
     font-weight: 400;
 }
 
+.booking-field{
+    display:flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.booking-field input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid black;
+}

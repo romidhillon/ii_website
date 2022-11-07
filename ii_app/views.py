@@ -12,7 +12,7 @@ import requests
 from ii_app.forms import RiskForm, BookingForm
 from django.forms import modelformset_factory 
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
-from .forms import RiskForm, BookingDate, BookingForm
+from .forms import RiskForm, BookingForm
 import datetime
 
 # Create your views here.
@@ -71,24 +71,24 @@ def risk_form(request):
 
 
 def update_risk_item(request,risk_id):
-    risk = Risk.objects.get(id=risk_id)
-    form = RiskForm(request.POST or None,instance = risk)
+    item = Risk.objects.get(id=risk_id)
+    form = RiskForm(request.POST or None,instance = item)
 
     if form.is_valid():
         form.save()
         return redirect('')
 
-    return render (request, 'ii_app/risk_form.html', {'form':form, 'risk':risk})
+    return render (request, 'ii_app/risk_form.html', {'form':form, 'item':item})
 
 
 def delete_risk_item(request,risk_id):
-    risk = Risk.objects.get(id=risk_id)
+    item = Risk.objects.get(id=risk_id)
   
     if request.method =='POST':
-        risk.delete()
+        item.delete()
         return redirect('')
      
-    return render (request, 'ii_app/delete_risk_item.html', {'risk':risk})
+    return render (request, 'ii_app/delete_risk_item.html', {'item':item})
 
 
 def risk_register(request):
@@ -221,34 +221,45 @@ def bookings (request):
    return render (request, 'ii_app/bookings.html', context)
 
 
-def booking_form(request,code):
+def booking_form(request,assignment_code):
 
+    assignment = Assignment.objects.get(pk=assignment_code)
     week_start = date.today()
     week_start -= timedelta(days=week_start.weekday())
     week_end = week_start + timedelta(days=4)
+    day_dict = {
+        'monday':week_start,
+        'tuesday': week_start + timedelta(days = 1),
+        'wednesday':  week_start + timedelta(days = 2),
+        'thursday':  week_start + timedelta(days = 3),
+        'friday':  week_start + timedelta(days = 4),
+    }
 
-    form = BookingForm(request.POST or None)
+    day_dict_2 = [value.strftime('%d-%m-%Y') for key,value in day_dict.items()]
+
+    bookings = assignment.booking_set.filter(day__gte=week_start, day__lte=week_end)
+    booking_dict = {booking.day.strftime('%A').lower():booking for booking in bookings}
+   
+    form = BookingForm(initial={key:value.hours for key,value in booking_dict.items()})
+    print(request.POST)
     if request.method == "POST":
+        form = BookingForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request,"Timesheet submitted successfully")
-            return redirect('')
-
-    forms = BookingDate(request.POST or None)
-    
-    # booking_form = modelformset_factory(Booking, fields = ('day', 'hours'), extra =5)
-    
-    # form = booking_form(queryset = Booking.objects.none())
-
-    # if form.is_valid():
-    #     form.save()
-    #     return redirect('')
+            for key,value in form.cleaned_data.items():
+                if key in booking_dict:
+                    booking_dict[key].hours = value
+                    booking_dict[key].save()
+                else:
+                    booking = assignment.booking_set.create(day = day_dict[key], hours = value)
+        #     messages.success(request,"Timesheet submitted successfully")
+            return redirect(f'/ii_app/bookings/{assignment_code}')
+      
 
     context = {
         'form':form,
-        'forms':forms,
-        'week_end':week_end
- 
+        'week_end':week_end,
+        'day_dict':day_dict_2,
+        'zipped':zip(form,day_dict_2)
     }
 
     return render (request, 'ii_app/booking_form.html', context)

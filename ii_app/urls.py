@@ -34,7 +34,7 @@ urlpatterns = [
 
     path('bookings/', views.bookings, name='bookings'),
 
-    path('bookings/<str:code>/', views.booking_form, name='booking_form'),
+    path('bookings/<str:assignment_code>/', views.booking_form, name='booking_form'),
 
 ]
 

@@ -1,70 +1,22 @@
 {% extends 'users/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block main %}
 
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="sign-up-image">
-
-        <section class="vh-100 gradient-custom">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg-dark text-white" style="border-radius: 3rem;">
-                            <div class="card-body p-5 mt-0 pb-0 pt-0 text-center">
-                                <div class="mb-md-0 mt-md-2 mt-0 pb-0">
-                                    <h2 class="mt-5 mb-5">Project Management App</h2>
-                                    <p> Password must contain Letters, digits and @/./+/-/_ only.
-                                        <p> Password must contain at least 8 characters.
-                                            <p> Password cannot contain your name
-                                                <p class="mb-0"> password can’t be entirely numeric.</p>
-                                            </p>
-                                            <form class="form-group" method="POST">
-                                                {%csrf_token%}
-                                                <label for="">Username</label>
-                                                {{form.username}} <br>
-                                                <label for="">Password</label>
-                                                {{form.password1}} <br>
-                                                <label for="">Confirm Password</label>
-                                                {{form.password2}} <br>
-                                                <button class="btn btn-outline-light btn-lg px-5 mt-3" type="submit"> Sign-in</button>
-                                            </form>
-
-                                            <div>
-                                                <p class="mb-2 pb-2">Already have an account? <a href="../login/"
-                                                        class="text-white-50 fw-bold">Login</a>
-                                                </p>
-                                            </div>
-
-                                            {% if form.errors %}
-                                            <div class="alert alert-danger mt-4 ">
-                                                {% for key, value in form.errors.items %}
-                                                {{ value.as_text }}
-                                                {% endfor %}
-                                            </div>
-                                            {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-    </div>
+<section class="sign-up-image">
+    
+    <form class="form-row sign-up-form col-md-12 mb-0" method="POST" action="">
+        
+        {%csrf_token%}
+        
+        {{ form|crispy }}
+        
+        <input class="sign-up-button" type="submit" name="create user">
+     
+    </form>
+    
+</section>
 
 
-  
-  
-
-
-    {% endblock %}
+{% endblock %}

@@ -19,7 +19,7 @@
 {% for item in resource_info %}
 
   <li class="finance-link">
-    <a href="/ii_app/bookings/{{item.position.project.code}}">{{item.position.project.code}} - {{item.resource}} </a>
+    <a href="/ii_app/bookings/{{item.id}}">{{item.position.project.code}} - {{item.resource}} </a>
   </li>
 {% empty %}
 <p>Search found nothing</p>

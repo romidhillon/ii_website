@@ -20,29 +20,15 @@
     <h4 class="booking-header">Week Ending: {{week_end}}</h4>
     <form class="booking-form-items" method="POST">
             {%csrf_token%}
-            <div class="booking-form-1">
-                <label class="booking-day" for="">Monday</label>
-                {{form|crispy}}
-                {{forms|crispy}}
-       
+    {% for field,date in zipped %}
+            <div class="booking-field">
+                <label class="booking-day" for="">{{field.label}} <br/><br/> {{date}}</label>
+              
+                {{field}}
                 
             </div>
-            <div class="booking-form-2">
-                <label class="booking-day" for="">Tuesday</label>
-                {{form|crispy}}
-            </div>
-            <div class="booking-form-3">
-                <label class="booking-day" for="">Wednesday</label>
-                {{form|crispy}}
-            </div>
-            <div class="booking-form-4">
-                <label class="booking-day" for="">Thursday</label>
-                {{form|crispy}}
-            </div>
-            <div class="booking-form-5">
-                <label class="booking-day" for="">Friday</label>
-                {{form|crispy}}
-            </div>
+    {% endfor %}
+            
             <div class="break">
 
             </div>

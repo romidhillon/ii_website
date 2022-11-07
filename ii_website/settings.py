@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
-    'bootstrap_datepicker_plus',
     'users.apps.UsersConfig',
     'ii_app.apps.IiAppConfig',
     'django.contrib.admin',
@@ -126,8 +125,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS= [
     BASE_DIR / 'static',
     BASE_DIR / 'ii_app/static',
+    BASE_DIR / 'users/static',
 
 ]
+
+
 
 MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'

@@ -195,12 +195,6 @@ section .login-image {
     background-size: 100% 100%;
 }
 
-.sign-up-image{
-    background-image: url("../ii_app/images/amey2.png");
-    width: 100%;
-    height: 100%;
-    background-size: 100% 100%;
-}
 
 
 .logout-item{
@@ -360,3 +354,36 @@ footer a:hover {
 
 }
 
+.sign-up-form {
+    width: 500px;
+    padding: 40px;
+    margin-left: 720px;
+    margin-top: 200px;
+    background-color: #292b2c;
+    color: #E0E0E0;
+    border-radius: 2rem;
+    border:#E0E0E0 1px solid;
+    
+}
+
+.sign-up-button {
+   margin-left: 170px;
+   margin-top: 20px;
+   border-radius: 0.5rem;
+   background-color: white;
+   padding: 7px;
+}
+
+.sign-up-image{
+    background-image: url("../ii_app/images/amey2.png");
+    width: 800%;
+    height: 150%;
+    background-size: 100% 100%;
+}
+
+.sign-up-image-2{
+    background-image: url("../ii_app/images/amey1.png");
+    width: 800%;
+    height: 150%;
+    background-size: 100% 100%;
+}

@@ -1,3 +1,4 @@
+from sqlite3 import Date
 from django import forms 
 from .models import Booking, Risk
 from django.forms import Form, ModelForm, DateField, widgets
@@ -29,20 +30,20 @@ class RiskForm(forms.ModelForm):
 class DateInput(forms.DateInput):
     input_type = 'date'
 
-class BookingDate(forms.Form):
-    day = forms.DateField(widget=DateInput)
+
+class BookingForm(forms.Form):
+        monday = forms.FloatField(label='Monday') 
+        tuesday = forms.FloatField(label='Tuesday') 
+        wednesday = forms.FloatField(label='Wednesday') 
+        thursday = forms.FloatField(label='Thursday') 
+        friday = forms.FloatField(label='Friday') 
 
 
-    
-class BookingForm(forms.ModelForm):
-    class Meta:
-        model = Booking
-        fields = ['day','hours']
 
-        widgets = {
-                'day':widgets.DateInput(attrs={'type': 'date'}),
-                'hours': forms.Select(attrs = {'class':'form-control'}, choices= status_choices ),
-                 },
+
+        
+
+      
     
 
 
