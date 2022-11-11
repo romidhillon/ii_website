@@ -14,9 +14,11 @@ from django.forms import modelformset_factory
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
 from .forms import RiskForm, BookingForm
 import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url = 'sign_in')
 def main(request):
     resource_names = Resource.objects.all()
     count_of_resources = Resource.objects.count()
@@ -36,7 +38,7 @@ def main(request):
     }
     return render (request, 'ii_app/dashboard.html',context)
 
-
+@login_required(login_url = 'sign_in')
 def resources(request):
     query = request.GET.get("query")
     if query:
@@ -49,7 +51,7 @@ def resources(request):
 
     return render (request, 'ii_app/resources.html', context)
 
-
+@login_required(login_url = 'sign_in')
 def resource_detail(request,name):
     
     assignments = Assignment.objects.filter(resource__name = name)
@@ -60,6 +62,7 @@ def resource_detail(request,name):
 
     return render (request, 'ii_app/resource_detail.html', context)
 
+@login_required(login_url = 'sign_in')
 def risk_form(request):
     form = RiskForm(request.POST or None)
 
@@ -69,7 +72,7 @@ def risk_form(request):
 
     return render (request, 'ii_app/risk_form.html', {'form':form})
 
-
+@login_required(login_url = 'sign_in')
 def update_risk_item(request,risk_id):
     item = Risk.objects.get(id=risk_id)
     form = RiskForm(request.POST or None,instance = item)
@@ -80,7 +83,7 @@ def update_risk_item(request,risk_id):
 
     return render (request, 'ii_app/risk_form.html', {'form':form, 'item':item})
 
-
+@login_required(login_url = 'sign_in')
 def delete_risk_item(request,risk_id):
     item = Risk.objects.get(id=risk_id)
   
@@ -90,7 +93,7 @@ def delete_risk_item(request,risk_id):
      
     return render (request, 'ii_app/delete_risk_item.html', {'item':item})
 
-
+@login_required(login_url = 'sign_in')
 def risk_register(request):
 
     query = request.GET.get('query') or ''
@@ -102,12 +105,12 @@ def risk_register(request):
     }
     return render (request, 'ii_app/risk_register.html', context)
 
-
+@login_required(login_url = 'sign_in')
 def margin(request):
 
     return render (request, 'ii_app/margin.html')
 
-
+@login_required(login_url = 'sign_in')
 def finances(request):
 
     query = request.GET.get('query') or ''
@@ -120,7 +123,7 @@ def finances(request):
     return render (request, 'ii_app/finances.html', context)
     
     
-
+@login_required(login_url = 'sign_in')
 def finance_detail (request, code):
     
     project = Project.objects.get(code=code)
@@ -180,6 +183,7 @@ def finance_detail (request, code):
 
     return render (request, 'ii_app/finance_detail.html', context)
 
+@login_required(login_url = 'sign_in')
 def cv(request):
     resource = Resource.objects.all()
 
@@ -189,7 +193,7 @@ def cv(request):
 
     return render (request, 'ii_app/cv.html', context)
 
-
+@login_required(login_url = 'sign_in')
 def api(request):
    
     api = requests.get('https://api.covid19api.com/countries').json()
@@ -198,6 +202,7 @@ def api(request):
     }
     return render (request, 'ii_app/api.html', context)
 
+@login_required(login_url = 'sign_in')
 def search_bar (request):
     if request.method == 'GET':
         query = request.GET.get('query')
@@ -209,6 +214,7 @@ def search_bar (request):
         print("your query did not return any results")
         return request (request, 'ii_app/search_bar.html', {})
 
+@login_required(login_url = 'sign_in')
 def bookings (request):
 
    query = request.GET.get('query') or ''
@@ -220,7 +226,7 @@ def bookings (request):
     }
    return render (request, 'ii_app/bookings.html', context)
 
-
+@login_required(login_url = 'sign_in')
 def booking_form(request,assignment_code):
 
     assignment = Assignment.objects.get(pk=assignment_code)

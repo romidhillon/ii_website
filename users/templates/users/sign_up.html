@@ -10,10 +10,15 @@
         
         {%csrf_token%}
         
-        {{ form|crispy }}
+        {{ sign_up_form|crispy }}
         
         <input class="sign-up-button" type="submit" name="create user">
-     
+        
+        <div>
+            <p class="mb-2 pb-2">Already have an account? <a href="../sign_in/" class="text-white-50 fw-bold">Sign
+                In</a>
+            </p>
+        </div>
     </form>
     
 </section>

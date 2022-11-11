@@ -25,8 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ii_app/', include('ii_app.urls')),
     path('sign_up/',user_views.sign_up, name= 'sign_up'),
-    path('login/',authentication_views.LoginView.as_view(template_name = 'users/login.html'), name= 'login'),
-    path('logout/',authentication_views.LoginView.as_view(template_name = 'users/logout.html'), name= 'logout'),
+    path('sign_in/',user_views.sign_in, name= 'sign_in'),
+    path('sign_out/',user_views.sign_out, name= 'sign_out'),
     path('profile/',user_views.profile_page,  name= 'profile'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

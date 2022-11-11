@@ -384,6 +384,14 @@ footer a:hover {
 .sign-up-image-2{
     background-image: url("../ii_app/images/amey1.png");
     width: 800%;
-    height: 150%;
+    height: 175%;
     background-size: 100% 100%;
+}
+
+.messages {
+    background: #4ba7c8;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
 }

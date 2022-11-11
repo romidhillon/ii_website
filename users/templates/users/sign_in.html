@@ -1,0 +1,67 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+
+<section class="sign-up-image-2">
+    <form class="form-row sign-up-form col-md-12 mb-0" method="POST" action="">
+
+        {%csrf_token%}
+
+                {{ sign_in_form|crispy }}
+
+                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot
+                    password?</a>
+                </p>
+                
+                <input class="sign-up-button" type="submit" name="create user">
+
+                <div>
+                    <p class="mb-2 pb-2">Don't have an account? <a href="../sign_up/" class="text-white-50 fw-bold">Sign
+                        Up</a>
+                    </p>
+                </div>
+
+                {% if messages %}
+                {% for message in messages %}
+                <p class="messages">
+                    {{ message }}
+                </p>
+                {% endfor %}
+                {% endif %}
+                
+            
+            </form>
+ 
+        
+      
+        
+      
+        
+        <!-- <div class="alert alert-danger mt-4 ">
+            {% for key, value in form.errors.items %}
+            {{ value.as_text }}
+            {% endfor %}
+        </div> -->
+    </form>
+    
+</section>
+
+{% endblock %}
+
+
+<!-- {% if next %}
+<input type="hidden" name="next" value="{{ next }}" />
+{% endif %}
+<div class="control-group">
+    <label class="control-label mt-5" for="username">Enter username</label>
+    <div class="controls">
+        <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label mt-4" for="password">Enter password</label>
+    <div class="controls">
+        <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+    </div>
+</div><br> -->
