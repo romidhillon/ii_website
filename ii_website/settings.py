@@ -142,3 +142,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = ''
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# SMPT Configuration 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'array.tech.info@gmail.com'
+EMAIL_HOST_PASSWORD = 'kpvcaxztxvehgeti'
