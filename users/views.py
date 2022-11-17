@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from users.forms import SignInForm, SignUpForm
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 
 # Create your views here.
@@ -15,6 +16,7 @@ def sign_up (request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request,f'Hi {username}, you have successfully created your account. Please sign-in to continue.')
+            Profile.objects.create(user = username)
             return redirect('../sign_in/')
     else:
         form = SignUpForm()

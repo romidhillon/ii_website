@@ -395,3 +395,7 @@ footer a:hover {
     border-radius: 0.5rem;
     margin-top: 1rem;
 }
+
+#password-reset-notice {
+    padding-top: 30px;
+}
