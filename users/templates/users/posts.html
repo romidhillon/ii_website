@@ -1,0 +1,22 @@
+{% extends 'users/base.html' %}
+
+
+
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+{% endblock %}
+
+
+{% block main %}
+<div class="posts">
+    {% for post in posts %}
+    <div class="card">
+        <h5 class="card-heading">  <i class='bx bxs-color' ></i> {{post.user}}</h5>
+        <div class="metrics metrics1">{{post.title}}</div>
+    </div> 
+    {% endfor %}
+</div>
+{%endblock%}
+
+

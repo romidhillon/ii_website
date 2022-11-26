@@ -1,5 +1,5 @@
 * {
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
     box-sizing: border-box;
 }
 
@@ -399,3 +399,31 @@ footer a:hover {
 #password-reset-notice {
     padding-top: 30px;
 }
+
+/* division for posts page */
+.posts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 450px;
+    padding:10px;
+    width: 1000px;
+
+}
+/* each card on the post page */
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0px;
+    margin-top: 25px;
+    outline:#292b2c 1px solid;
+}
+/* card heading for each card on posts page */
+.card-heading {
+    display: flex;
+    text-decoration: underline;
+  
+}
+

@@ -1,0 +1,22 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+
+
+<section class="sign-up-image-2">
+
+
+    <form class="form-row sign-up-form col-md-12 mb-0" method="POST" enctype="multipart/form-data" action="">
+    
+        <p>edit profile</p>
+        
+        {%csrf_token%}
+            
+        {{ form|crispy }}
+        
+        <input class="sign-up-button" type="submit" name="send email">
+
+    </form>
+
+{% endblock %}
