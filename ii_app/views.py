@@ -12,7 +12,7 @@ import requests
 from ii_app.forms import RiskForm, BookingForm
 from django.forms import modelformset_factory 
 from .models import Project, Resource, Position, Contract, Assignment,  Booking, Invoice, Risk
-from .forms import RiskForm, BookingForm
+from .forms import RiskForm, BookingForm, FileUploadForm
 import datetime
 from django.contrib.auth.decorators import login_required
 
@@ -185,10 +185,20 @@ def finance_detail (request, code):
 
 @login_required(login_url = 'sign_in')
 def cv(request):
+    if request.method == "POST":
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        file = request.FILES['file']
+        
+    else:
+        form = FileUploadForm()
+
     resource = Resource.objects.all()
 
     context = {
         'resource': resource ,
+        'form':form
     }
 
     return render (request, 'ii_app/cv.html', context)

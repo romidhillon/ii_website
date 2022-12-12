@@ -1,10 +1,14 @@
-from django.shortcuts import redirect, render
+from typing_extensions import Self
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from users.forms import SignInForm, SignUpForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post
 from .forms import EditProfileForm, EditUserForm, PostCreateForm
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -63,30 +67,40 @@ def sign_in (request):
 
 
 @login_required
-def post_creation (request):
-    if request.method == 'POST':
-        form = PostCreateForm(request.POST, request.FILES)
-        if form.is_valid():
-            new_item = form.save(commit=False)
-            new_item.user = request.user
-            new_item.save()
+def posts (request):
+    posts = Post.objects.all()
+
+    form = PostCreateForm(request.POST)
+    if form.is_valid():
+        new_item = form.save(commit=False)
+        new_item.user = request.user
+        new_item.save()
     else: 
         form = PostCreateForm()
 
-    context = {
-        'form': form
-    }
-    return render(request,'users/post_creation.html',context)
+    user_posts = request.user.posts.all()
 
-@login_required
-def posts (request):
-    posts = Post.objects.all()
-    context = {
-        'posts':posts
+    context = { 
+        'form': form,
+        'posts':posts,
+        'user_posts': user_posts
     }
 
-    return render (request,'users/posts.html',context)
+    return render(request,'users/posts.html',context)
 
+
+def likes (request, pk):
+
+    post = get_object_or_404(Post, id = pk)
+
+    if post.likes.contains(request.user):
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    
+    return HttpResponseRedirect(reverse('posts'))
+
+    
 def sign_out(request):
     logout(request)
     return redirect('sign_in')
@@ -94,18 +108,26 @@ def sign_out(request):
 
 @login_required
 def profile_page (request):
-    return render(request,'users/profile.html')
+    
+    
+    first_name = User.objects.get(username=request.user).first_name
+    last_name = User.objects.get(username=request.user).last_name
+    username = User.objects.get(username=request.user).username
+    last_login = User.objects.get(username=request.user).last_login
+    email = User.objects.get(username=request.user).email
+    date_joined = User.objects.get(username=request.user).date_joined
+
+    
+    context = {
+        'first_name': first_name,
+        'last_name': last_name,
+        'username': username,
+        'email':email,
+        'last_login':last_login,
+        'date_joined': date_joined,
+    }
+
+    return render(request,'users/profile.html',context)
 
 
 
-
-
-
-          # username = request.POST.get('username')
-        # password = request.POST.get('password1')
-
-        # user = authenticate(request = username, password = password)
-
-        # if user is not None: 
-        #     login(request, user)
-        #     return redirect('')

@@ -38,8 +38,9 @@ class BookingForm(forms.Form):
         thursday = forms.FloatField(label='Thursday') 
         friday = forms.FloatField(label='Friday') 
 
-
-
+# form for cv uploads on the cv page 
+class FileUploadForm(forms.Form):
+    file = forms.FileField()
 
         
 

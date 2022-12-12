@@ -41,9 +41,12 @@ urlpatterns = [
     
     path('edit/',user_views.edit,  name= 'edit'),
 
-    path('create_post/',user_views.post_creation,  name= 'create_post'),
+    # path('create_post/',user_views.post_creation,  name= 'create_post'),
 
     path('posts/',user_views.posts,  name= 'posts'),
+
+    path('like_post/<int:pk>/',user_views.likes,  name= 'like_post'),
+
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

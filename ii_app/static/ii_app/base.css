@@ -1,5 +1,5 @@
 * {
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     box-sizing: border-box;
 }
 
@@ -401,13 +401,14 @@ footer a:hover {
 }
 
 /* division for posts page */
+
 .posts{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-left: 450px;
     padding:10px;
-    width: 1000px;
+    width: 600px;
+    margin-top: 0px;
+    margin-right: 0px;
 
 }
 /* each card on the post page */
@@ -415,15 +416,35 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
     margin-left: 0px;
-    margin-top: 25px;
-    outline:#292b2c 1px solid;
+    margin-top: 30px;
+    outline:grey 1px solid;
+ 
 }
 /* card heading for each card on posts page */
 .card-heading {
     display: flex;
-    text-decoration: underline;
+    background-color: lightgrey;
+    
   
 }
 
+.sign-up-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px ;
+    margin-left: 0px;
+}
+
+
+.post-grid_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.post-grid-child-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -37,24 +37,21 @@
   </table>
 
 
+
+  <form class="{% url 'cv' %}" method="POST" enctype="multipart/form-data" action="">
+
+    <p>upload cv</p>
+    
+    {%csrf_token%}
+        
+    {{form.file}}
+    
+    <input class="sign-up-button" type="submit" value = "upload" name="send email">
+</form>
+
+
 {% endblock %}
 
 
-<table id="cv-table">
-  <tr class="cv-table-rows">
-    <th>Image</th>
-    <th>Name</th>
-    <th>Skillsets</th>
-    <th>Grade</th>
-    <th>File</th>
-  </tr>
 
-  {% for item in resource %}
-  <tr class="cv-table-rows">
-    <td class="cv-table-descriptions">Alfreds Futterkiste</td>
-    <td class="cv-table-descriptions">Maria Anders</td>
-    <td class="cv-table-descriptions">Germany</td>
-  </tr>
-  {% endfor %}
-  
-</table>
+

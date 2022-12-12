@@ -28,4 +28,4 @@ class EditProfileForm(forms.ModelForm):
 class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'image', 'caption')
+        fields = ('opportunity', 'message')
