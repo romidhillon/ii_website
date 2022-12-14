@@ -15,7 +15,7 @@
 
         <form class=" sign-up-form " method="POST" enctype="multipart/form-data" action="">
 
-            <p>edit profile</p>
+            <p class="opportunity">Add Opportunity</p>
             
             {%csrf_token%}
                 
@@ -32,7 +32,7 @@
         <div class="posts">
             {% for post in posts %}
             <div class="card">
-                <h5 class="card-heading">  <i class='bx bxs-color' ></i> {{post.user}} &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  {{post.created}}</h5>
+                <h5 class="card-heading">  <i class='bx bx-user'></i> &nbsp &nbsp {{post.user}} &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  {{post.created}}</h5>
                 <div class="metrics metrics1">{{post.opportunity}}</div>
             </div> 
 
@@ -41,17 +41,30 @@
 
                 <form action="{% url 'like_post' post.pk %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit" name = "post_id" value = "{{post.id}}" class="btn btn-primary btn-sm"> 
-                    {%if post in user_posts%}
-                    unlike
-                    {%else%}
-                    Like
-                    {%endif%}
-                    {{post.likes.count}}
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                        </svg> -->
+
+                    <button type="submit" name = "post_id" value = "{{post.id}}" class="heart-button"> 
+                        {%if post in user_posts%}
+                        <i class='bx bxs-heart'></i> &nbsp
+                        <i class='bx bx-comment'></i> &nbsp
+                        {%else%}
+                        <i class='bx bx-heart'></i> &nbsp
+                        <i class='bx bx-comment'></i> &nbsp
+                        {%endif%}
                     </button>
+
+                    <!-- <button type="submit" name = "post_id" value = "{{post.id}}" class="comment-button"> 
+                        {%if post in user_posts%}
+                        <i class='bx bxs-comment'></i> &nbsp
+                        {%else%}
+                        <i class='bx bx-comment'></i> &nbsp
+                        {%endif%}
+                    </button> -->
+
+
+
+                    <div class="like-count">
+                        Likes:{{post.likes.count}}
+                    </div>
                     
                 </form>
     
@@ -60,36 +73,12 @@
             </div>
 
 
-
-
-
-            <a id="{{post.id}}" class="btn-like" href="">
-                <i class='bx bx-heart'></i> &nbsp
-            </a>
-
-            <div>
-                <i class='bx bx-heart'></i> &nbsp
-                <i class='bx bx-message-dots' ></i> &nbsp
-                <i class='bx bx-share-alt' ></i>
-            </div>
+            
             {% endfor %}
 
           
         </div>
-<!-- 
-    </div>
-        <script type="text/javascript">
-            // console.log('this is working')
-        window.CSRF_TOKEN = "{{ csrf_token }}"
-        $(document).on('click','.btn-like', function() {
-            var post_id = this.id
-            $.ajax({
-                method:"POST",
-                url:'posts/likes',
-                data:{post_id:post_id, csrfmiddlewaretoken:window.CSRF_TOKEN}
-            })
-        })
-        </script> -->
+
 
 </div>
 

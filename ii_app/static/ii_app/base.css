@@ -118,7 +118,46 @@ header a {
 }
 .nav-links .nav-link a:hover {
     color: #d70b52
-}s
+}
+
+
+.dropdown-center i {
+    font-size: 50px;
+    color: darkgrey;
+}
+
+.dropdown-center i:hover {
+    color: #d70b52
+}
+
+.dropdown-toggle{
+    align-items: center;
+    background-color: #292b2c;
+    border: 1px solid #292b2c;
+    margin-left: 0px;
+    color: darkgrey;
+}
+
+.dropdown-menu{
+    background-color: #292b2c;
+    outline: #292b2c;
+}
+
+.dropdown-menu :hover{
+    background-color: #292b2c;
+} 
+
+.dropdown-item {
+    color: darkgray;
+}
+
+
+
+
+
+
+
+
 
 .search {
     display: flex;
@@ -409,6 +448,7 @@ footer a:hover {
     width: 600px;
     margin-top: 0px;
     margin-right: 0px;
+    position: sticky;
 
 }
 /* each card on the post page */
@@ -419,32 +459,88 @@ footer a:hover {
     margin-left: 0px;
     margin-top: 30px;
     outline:grey 1px solid;
+    
  
 }
 /* card heading for each card on posts page */
 .card-heading {
     display: flex;
-    background-color: lightgrey;
-    
-  
+    background-color: #d70b52;;
 }
-
-.sign-up-form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px ;
-    margin-left: 0px;
-}
-
 
 .post-grid_container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    gap: 30px;
+
+    justify-content: center;
+
 }
 
-.post-grid-child-1 {
+
+.sign-up-form{
+    display: flex;
+    flex-direction: column;
+    margin-left: 160px;
+    margin-top: 45px;
+    position:static;
+    background-color: #292b2c;
+}
+
+.opportunity {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #292b2c;
+} 
+
+.sign-up-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    background-color: whitesmoke;
+
+}
+
+.bx-user {
+    font-size: x-large;
+}
+
+.bxs-heart {
+    color:#d70b52;
+    font-size: x-large;
+    border-radius: none;
+    
+}
+
+.bx-heart {
+    font-size: x-large;
+    border-radius: none;
+    
+}
+
+.heart-button{
+    display: flex;
+    border: white;
+    background-color: white;
+    width:30px;
+    height: 20x;
+   
+}
+
+.like-count{
+    margin-top: 5px;
+}
+
+.bxs-comment{
+    display: absolute;
+    border: white;
+    width:30px;
+    height: 20x;
+}
+
+.navbar-toggler{
+    color: white;
 }
