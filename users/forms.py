@@ -29,3 +29,8 @@ class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('opportunity', 'message')
+
+# class CommentForm(forms.ModelForm):
+#     class Meta:
+#         model = Comment 
+#         field = ('opportunity',)

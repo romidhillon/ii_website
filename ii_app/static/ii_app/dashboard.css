@@ -4,14 +4,13 @@
       box-sizing: border-box;
 }
 
-
 .dashboard {
     margin: 0;
     display: grid;
     grid-template-areas:
-        'visual1 visual2 visual3 visual4';
+        'visual1 visual2 visual3';
     grid-template-rows: 10rem;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     gap: 30px;
     row-gap: 40px;
     margin-top: 10px;
@@ -22,7 +21,7 @@
     display: grid;
     grid-template-areas:
         'visual5 visual6 visual7';
-    grid-template-rows: 5rem;
+    grid-template-rows: 5rem ;
     grid-template-columns: 40rem 30rem 30rem;
     gap: 30px;
     row-gap: 40px;
@@ -40,82 +39,73 @@
 
 }
 
-
-.dashboard .card {
-    padding: 20px;
-    display: flex;
-    
+.card {
+    padding: 15px;
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+  
 }
 
 .card-heading {
+    background-color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 10px;
-    padding: 2px;
-   
+    flex-direction: column;
+    flex-wrap: wrap;
+    
 }
 
-.metrics {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20vh;
-    font-size:40px;
-    opacity: 0.7;
+.metrics .metrics1 {
+    position: relative;
+    right: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight:800;
+
 }
 
-.metrics1 i{
+
+.card1 i{
     color: gold;
-    position: absolute;
-    margin-left: 200px;
     stroke: black;
     stroke-width: 20;
     text-shadow: 0 0 3px #000;
+    font-size: xx-large;
    
 }
 
-.metrics2 i{
+.card2 i{
     color: blueviolet;
-    position: absolute;
-    margin-left: 200px;
     stroke: black;
-    stroke-width: 20;
+    stroke-width: 40;
+    font-size: xx-large;
    
 }
 
-.metrics3 i{
+.card3 i{
     color: #d70b52;
-    position: absolute;
-    margin-left: 200px;
     stroke: black;
     stroke-width: 20;
+    font-size: xx-large;
    
 }
-.metrics4 i{
-    color: green;
-    position: absolute;
-    margin-left: 200px;
-    stroke: black;
-    stroke-width: 20;
-   
-}
+
+
+
 
 .card1 {
-    border-left:3px solid gold ;
+    border-left:7px solid #d70b52 ;
 }
 .card2 {
-    border-left:3px solid blueviolet ;
+    border-left:7px solid #d70b52 ;
 }
 .card3 {
-    border-left:3px solid #d70b52 ;
+    border-left:7px solid #d70b52 ;
 }
 .card4 {
-    border-left:3px solid green ;
+    border-left:7px solid green ;
 }
 
 .card:hover {
-    margin: 5px;
-   
+    margin: 1px;
 }

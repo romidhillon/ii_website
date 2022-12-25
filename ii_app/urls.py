@@ -36,5 +36,9 @@ urlpatterns = [
 
     path('bookings/<str:assignment_code>/', views.booking_form, name='booking_form'),
 
+    path('projects/', views.project_list_api, name = 'projects'),
+
+    path('projects/<int:id>', views.project_list_api_detail, name = 'project_detail')
+
 ]
 

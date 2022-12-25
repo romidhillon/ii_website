@@ -80,6 +80,8 @@ def posts (request):
 
     user_posts = request.user.posts.all()
 
+
+
     context = { 
         'form': form,
         'posts':posts,
@@ -99,6 +101,9 @@ def likes (request, pk):
         post.likes.add(request.user)
     
     return HttpResponseRedirect(reverse('posts'))
+
+def comments (request,pk):
+    comment = Comment.objects.all(id = pk)
 
     
 def sign_out(request):

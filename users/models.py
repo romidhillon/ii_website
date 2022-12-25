@@ -20,6 +20,7 @@ class Post(models.Model):
     created = models.DateField(auto_now=True)
     likes = models.ManyToManyField(User, related_name = 'posts')
 
+
     def total_likes (self):
         return self.likes.count
 
@@ -34,3 +35,14 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.user)
         super().save(*args,**kwargs)
+    
+# class Comment (models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     date = models.DateField(auto_now_add=True)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     content = models.TextField()
+
+#     def __str__(self):
+#             return str(self.user.username)
+
+

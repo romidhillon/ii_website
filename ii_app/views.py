@@ -15,6 +15,11 @@ from .models import Project, Resource, Position, Contract, Assignment,  Booking,
 from .forms import RiskForm, BookingForm, FileUploadForm
 import datetime
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from .serializers import ProjectSerializer
+from rest_framework.decorators import api_view 
+from rest_framework import status
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -27,6 +32,9 @@ def main(request):
     open_risks = Risk.objects.filter(status = 'Open').count()
     date_filter = Booking.objects.filter(day__gte='2022-03-01', day__lte='2019-03-09')
     sum_of_hours = sum(date_filter)
+    count_of_bookings = Risk.objects.filter(status = 'open')
+  
+
     
     context = {
         'resource_names': resource_names,
@@ -35,6 +43,7 @@ def main(request):
         'count_of_resources': count_of_resources,
         'open_risks': open_risks,
         'sum_of_hours': sum_of_hours,
+        'count_of_bookings': count_of_bookings
     }
     return render (request, 'ii_app/dashboard.html',context)
 
@@ -279,3 +288,38 @@ def booking_form(request,assignment_code):
     }
 
     return render (request, 'ii_app/booking_form.html', context)
+
+@api_view(['GET','POST'])
+
+def project_list_api (request):
+
+    if request.method == 'GET':
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(projects, many = True)
+        return JsonResponse({'projects':serializer.data})
+    
+    if request.method == 'POST':
+        serializer = ProjectSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+
+@api_view(['GET','PUT', 'DELETE'])
+def project_list_api_detail (request,id):
+
+    try: 
+        project = Project.objects.get(pk = id)
+    except Project.DoesNotExist:
+        return Response(status= status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ProjectSerializer(project)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        pass
+    elif request.method == 'DELETE':
+        pass
+
+# get all the projects 
+# serialize them 
+# return json
