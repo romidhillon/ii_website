@@ -9,6 +9,7 @@ from .forms import EditProfileForm, EditUserForm, PostCreateForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 
 
 # Create your views here.
@@ -80,12 +81,11 @@ def posts (request):
 
     user_posts = request.user.posts.all()
 
-
-
     context = { 
         'form': form,
         'posts':posts,
-        'user_posts': user_posts
+        'user_posts': user_posts,
+   
     }
 
     return render(request,'users/posts.html',context)
@@ -102,8 +102,8 @@ def likes (request, pk):
     
     return HttpResponseRedirect(reverse('posts'))
 
-def comments (request,pk):
-    comment = Comment.objects.all(id = pk)
+# def comments (request,pk):
+#     comment = Comment.objects.all(id = pk)
 
     
 def sign_out(request):
@@ -136,3 +136,23 @@ def profile_page (request):
 
 
 
+
+
+    # paginator = Paginator(user_posts,3)
+    # page = request.GET.get('page')
+
+    # try:
+    #     posts = paginator.page(page)
+    # except PageNotAnInteger:
+    #     posts = paginator.page(1)
+    # except EmptyPage:
+    #     posts = paginator.page(paginator.num_pages)
+
+    # context = { 
+    #     'form': form,
+    #     'posts':posts,
+    #     'user_posts': user_posts,
+    #     'page':page,
+    # }
+
+    # return render(request,'users/posts.html',context)
