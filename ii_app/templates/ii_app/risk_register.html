@@ -39,6 +39,7 @@
         <th class="heading-8" >Owner</th>
         <th class="heading-9" >Status</th>
         <th class="heading-10" >Date Opened</th>
+        <th class="heading-11" >Action</th>
       </tr>
     
       {% for item in risk_register %}
@@ -53,10 +54,13 @@
         <td class="description-8">{{item.owner}}</td>
         <td class="description-9">{{item.status}}</td>
         <td class="description-10">{{item.date_opened}}</td>
-        <td><a href=/ii_app/update/{{item.id}}><button>edit</button></a></td>
+        <td>
+          <a class='action' href=/ii_app/update/{{item.id}}>edit</a>
+          <a class='action' href=/ii_app/delete/{{item.id}}>delete</a>
+        </td>
 
         {% empty %}
-        <p>Search found nothing</p>
+        <p>There are no risks</p>
   
         {% endfor %}
       </tr>

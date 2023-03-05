@@ -16,42 +16,39 @@
 {% block main %}
 
 <div class="finance-detail">
-
-  <div class="card card1">
-      <h5 class="card-heading">Work in Progress (WIP)</h5>
-      <div class="metrics metrics1">{{work_in_progress}}  <i class='bx bxs-color'></i></div>
+  <div class="card">
+	<h5>Total Hours</h5>
+	<span>{{ total_hours }}</span>
   </div>
-
-  <div class="card card2">
-      <h5 class="card-heading">Life to Date Value</h5>
-      <div class="metrics metrics2">{{life_to_date}} 
-      <i class='bx bxs-group' ></i>
+  <div class="card">
+	  <h5>Total Revenue</h5>
+	  <span>£{{ total_revenue }}</span>
+	</div>
+	<div class="card">
+		<h5>Total Cost</h5>
+		<span>£{{ total_cost }}</span>
+	</div>
+	<div class="card">
+		<h5>Total Margin</h5>
+		<span>£{{ total_margin }}%</span>
+	</div>
+	<div class="card">
+	  <h5>Period Hours</h5>
+	  <span>{{ period_hours }}</span>
+	</div>
+  <div class="card">
+	<h5>Period Revenue</h5>
+	<span>£{{ period_revenue }}</span>
   </div>
-      
+  <div class="card">
+	<h5>Period Cost</h5>
+	<span>£{{ period_cost }}</span>
   </div>
-
-  <div class="card card3">
-      <h5 class="card-heading">Invoicing Last Period</h5>
-      <div class="metrics metrics3">{{period_invoicing}} <i class='bx bx-error-alt' ></i></div>
+  <div class="card">
+	<h5>Period Margin</h5>
+	<span>{{ period_margin }}%</span>
   </div>
-
-  <div class="card card4">
-      <h5 class="card-heading">Invoices Sum</h5>
-      <div class="metrics metrics4">£{{sum_of_invoice_values}} <i class='bx bxs-data'></i></div>
-  </div>
-  <div class="card card5">
-      <h5 class="card-heading">Project Margin</h5>
-      <div class="metrics metrics5">{{project_margin}}% <i class='bx bxs-data'></i></div>
-  </div>
-  <div class="card card6">
-      <h5 class="card-heading">Period Margin</h5>
-      <div class="metrics metrics6">£{{sum_of_invoice_values}} <i class='bx bxs-data'></i></div>
-  </div>
-  <div class="card card7">
-      <h5 class="card-heading">Accruals</h5>
-      <div class="metrics metrics7">£{{period_project_margin}}% <i class='bx bxs-data'></i></div>
-  </div>
-
+</div>
 
 {% endblock %}
 

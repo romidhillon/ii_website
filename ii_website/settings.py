@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -128,7 +127,6 @@ STATICFILES_DIRS= [
     BASE_DIR / 'users/static',
 
 ]
-
 
 
 MEDIA_ROOT = 'media/'

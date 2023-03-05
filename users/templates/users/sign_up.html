@@ -1,4 +1,10 @@
 {% extends 'users/base.html' %}
+{% load static %}
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'users/sign_up.css' %}">
+
+{% endblock %}
 
 {% load crispy_forms_tags %}
 

@@ -1,111 +1,42 @@
 
-*{
-      /* outline: 1px solid red; */
-      box-sizing: border-box;
-}
-
 .dashboard {
     margin: 0;
+    padding: 2rem;
     display: grid;
-    grid-template-areas:
-        'visual1 visual2 visual3';
-    grid-template-rows: 10rem;
-    grid-template-columns: auto auto auto;
-    gap: 30px;
-    row-gap: 40px;
-    margin-top: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
 
-}.dashboard-2 {
-
-    margin: 0;
-    display: grid;
-    grid-template-areas:
-        'visual5 visual6 visual7';
-    grid-template-rows: 5rem ;
-    grid-template-columns: 40rem 30rem 30rem;
-    gap: 30px;
-    row-gap: 40px;
-    margin-top: 10px;
-
+.chart canvas {
+    max-height: 20rem;
 }
 
 
-.dashboard-2 {
-    display: flex;
-    align-items:flex-start;
-    justify-content: center;
-    margin-top: 60px;
+table {
+    width: 100%;
     text-align: center;
-
+    border: 0.1rem solid black;
 }
 
-.card {
-    padding: 15px;
-    margin: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-  
-}
-
-.card-heading {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    
-}
-
-.metrics .metrics1 {
-    position: relative;
-    right: 10px;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-weight:800;
-
-}
-
-
-.card1 i{
-    color: gold;
-    stroke: black;
-    stroke-width: 20;
-    text-shadow: 0 0 3px #000;
-    font-size: xx-large;
-   
-}
-
-.card2 i{
-    color: blueviolet;
-    stroke: black;
-    stroke-width: 40;
-    font-size: xx-large;
-   
-}
-
-.card3 i{
-    color: #d70b52;
-    stroke: black;
-    stroke-width: 20;
-    font-size: xx-large;
-   
+table th  {
+    border: 0.1rem solid black;
+    background-color: #292b2c;
+    color: #E0E0E0;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
 
-
-.card1 {
-    border-left:7px solid #d70b52 ;
-}
-.card2 {
-    border-left:7px solid #d70b52 ;
-}
-.card3 {
-    border-left:7px solid #d70b52 ;
-}
-.card4 {
-    border-left:7px solid green ;
+table td {
+    border: 0.1rem solid black;
 }
 
-.card:hover {
-    margin: 1px;
+table tr:hover {
+    background: hsl(339, 90%, 95%);
 }
+
+table th, table td {
+    padding: 1rem;
+}
+

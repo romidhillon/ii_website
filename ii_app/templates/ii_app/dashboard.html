@@ -12,178 +12,181 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 {% endblock %}
 
-{% block main %} 
+{% block main %}
 
-    <div class="dashboard">
-        <div class="card card1">
-            <h5 class="card-heading">Number of Live Projects</h5>
-            <h5 class="metrics metrics1">{{count_of_projects}}</h5>
-            <i class='bx bxs-color'></i>
-        </div>
-
-        <div class="card card2">
-            <h5 class="card-heading">Number of Engaged Resources</h5>
-            <h5 class="metrics metrics2">{{count_of_resources}}</h5>
-            <i class='bx bxs-group'></i>
-        </div>
-
-        <div class="card card3">
-            <h5 class="card-heading">Number of Open Risks</h5>
-            <h5 class="metrics metrics3">{{open_risks}} </h5>
-            <i class='bx bx-error-alt' ></i>
-        </div>
+<div class="dashboard">
+    <div class="chart">
+        <table>
+            <thead>
+                <tr>
+                    <th>Project Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>
+                            <canvas id='revenue-chart' width='50' height='50'></canvas>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-    <!-- {{count_of_bookings}} -->
-
-    <div class="dashboard-2">
-    <div class="visual1" style="order:1"
-        <h4 class="">Charge rate per resource</h4>
-        <canvas id="myChartss" width="500" height="200" ></canvas>
-        <script>
-            const ctx3 = document.getElementById('myChartss').getContext('2d');
-            const myChartss = new Chart(ctx3, {
-                type: 'bar',
-                data: {
-                    labels: [{% for data in resource_names %} '{{data.name}}',{% endfor %}],
-                    datasets: [{
-                        // label: '# of Votes',
-                        data: [{% for data in assignment_rate %} '{{data.rate}}',{% endfor %}],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend:{
-                            display:false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-                  
-            });
-        
-        </script>
+    <div class="chart">
+        <table>
+            <thead>
+                <tr>
+                    <th>Project Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>
+                            <canvas id='cost-chart' width='50' height='50'></canvas>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-
-    <div class="visual2" style="order:2"
-      
-    <h4 class="">Charge rate per resource</h4>
-    <canvas id="myChartsss" width="400" height="200" ></canvas>
-    <script>
-        const ctx4 = document.getElementById('myChartsss').getContext('2d');
-        const myChartsss = new Chart(ctx4, {
-            type: 'pie',
-            data: {
-                labels: [{% for data in resource_names %} '{{data.name}}',{% endfor %}],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [{% for data in assignment_rate %} '{{data.rate}}',{% endfor %}],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-              
-        });
+    <div class='open-risks'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Open Risks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ open_risks }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='live-projects'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Project Code</th>
+                    <th>Assignments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in live_projects %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class='assignment-hours'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Project Code</th>
+                    <th>Resource Name</th>
+                    <th>Position Name</th>
+                    <th>Hours this Week</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in assignment_hours %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                    <td>{{ row.2 }}</td>
+                    <td>{{ row.3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class='assignment-dates'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Project Code</th>
+                    <th>Resource Name</th>
+                    <th>Position Name</th>
+                    <th>End date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in assignment_dates %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                    <td>{{ row.2 }}</td>
+                    <td>{{ row.3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     
-    </script>
-
-    </div>
-
-
-    <div class="visual3" style="order:3">
-      
-    <h4 class="">Charge rate per resource</h4>
-    <canvas id="myChartssss" width="400" height="200" ></canvas>
-    <script>
-        const ctx5 = document.getElementById('myChartssss').getContext('2d');
-        const myChartssss = new Chart(ctx5, {
-            type: 'pie',
-            data: {
-                labels: [{% for data in resource_names %} '{{data.name}}',{% endfor %}],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [{% for data in assignment_rate %} '{{data.rate}}',{% endfor %}],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-              
-        });
+</div>
+<script>
+    const backgroundColors = [
+        'hsl(0, 100%, 80%)',
+        'hsl(60, 100%, 80%)',
+        'hsl(120, 100%, 80%)',
+        'hsl(180, 100%, 80%)',
+        'hsl(240, 100%, 80%)',
+        'hsl(300, 100%, 80%)'
+    ]
+    const borderColors = [
+        'hsl(0, 100%, 30%)',
+        'hsl(60, 100%, 30%)',
+        'hsl(120, 100%, 30%)',
+        'hsl(180, 100%, 30%)',
+        'hsl(240, 100%, 30%)',
+        'hsl(300, 100%, 30%)'
+    ]
     
-    </script>
+    const ctx1 = document.querySelector('#revenue-chart').getContext('2d')
+    const chart1 = new Chart(ctx1, {
+        type: 'pie',
+        options: {
+            plugins: {
+                legend: {position: 'right'},
+            }
+        },
+        data: {
+            labels: [{% for label in project_revenues.0 %} '{{ label }}', {% endfor %}],
+            datasets: [
+                {
+                    label: 'Project Revenue',
+                    data: [{% for rev in project_revenues.1 %} {{ rev }}, {% endfor %}],
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors
+                }
+            ]
+        }
+    })
 
-    </div>
-</div>
-
-</div>
-
-
+    const ctx2 = document.querySelector('#cost-chart').getContext('2d')
+    const chart2 = new Chart(ctx2, {
+        type: 'pie',
+        options: {
+            plugins: {
+                legend: {position: 'right'}
+            }
+        },
+        data: {
+            labels: [{% for label in project_costs.0 %} '{{ label }}', {% endfor %}],
+            datasets: [
+                {
+                    label: 'Project Costs',
+                    data: [{% for cost in project_costs.1 %} {{ cost }}, {% endfor %}],
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors
+                }
+            ]
+        }
+    })
+</script>
 {% endblock %}
-
-

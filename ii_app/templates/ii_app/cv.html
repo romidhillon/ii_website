@@ -29,26 +29,14 @@
       <td class="cv-table-descriptions">{{item.name}}</td>
       <td class="cv-table-descriptions">{{item.skillset}}</td>
       <td class="cv-table-descriptions">{{item.amey_position}}</td>
-      <td class="cv-table-descriptions"><i class='bx bx-news' ></i></td>
+      <td class="cv-table-descriptions">
+        <a class='action' href="{{item.cv.url}}">CV</a>
+      </td>
 
     </tr>
     {% endfor %}
     
   </table>
-
-
-
-  <form class="{% url 'cv' %}" method="POST" enctype="multipart/form-data" action="">
-
-    <p>upload cv</p>
-    
-    {%csrf_token%}
-        
-    {{form.file}}
-    
-    <input class="sign-up-button" type="submit" value = "upload" name="send email">
-</form>
-
 
 {% endblock %}
 

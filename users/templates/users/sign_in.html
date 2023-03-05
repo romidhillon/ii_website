@@ -1,5 +1,12 @@
 {% extends 'users/base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'users/sign_up.css' %}">
+
+{% endblock %}
 
 {% block main %}
 
@@ -22,13 +29,13 @@
                     </p>
                 </div>
 
-                {% if messages %}
+                <!-- {% if messages %}
                 {% for message in messages %}
                 <p class="messages">
                     {{ message }}
                 </p>
                 {% endfor %}
-                {% endif %}
+                {% endif %} -->
                 
             
             </form>

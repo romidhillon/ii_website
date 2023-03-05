@@ -1,7 +1,6 @@
 from django import forms 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm , AuthenticationForm
-from traitlets import All
 from .models import Profile , Post
 
 
@@ -30,7 +29,8 @@ class PostCreateForm(forms.ModelForm):
         model = Post
         fields = ('opportunity', 'message')
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comment 
-#         field = ('opportunity',)
+
+
+
+
+# from traitlets import All

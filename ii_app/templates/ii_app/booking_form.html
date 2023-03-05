@@ -17,6 +17,7 @@
 {% block main %} 
 
 <div class="booking-form">
+    <h3>Employee Name: &nbsp; {{resource}}</h3>
     <h4 class="booking-header">Week Ending: {{week_end}}</h4>
     <form class="booking-form-items" method="POST">
             {%csrf_token%}
@@ -34,9 +35,11 @@
             </div>
             <!-- <button type="submit">Save</button> -->
             <div class="booking-form-button">
-                <button class="btn btn-outline-dark " href = "/ii_app/bookings/{{project}}"  align type="submit">Save</button>
+                <button class="btn btn-outline-dark" href = "/ii_app/bookings/{{project}}"  align type="submit">Save</button>
             </div>
     </form>
+    
+    <a href="/ii_app/bookings/{{project}}?week={{week|add:1}}">previous_week</a>
 
 </div>
 

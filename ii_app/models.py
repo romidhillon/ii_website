@@ -5,12 +5,7 @@ from .choices import status_choices
 from .choices import position_choices
 from .choices import risk_owner_choices
 from .choices import risk_probability_choices
-# from django.contrib.auth.models import User
 from .choices import risk_impact_choices
-
-
-# Create your models here.
-
 
 class Client(models.Model):
     name = models.CharField (max_length=200)
@@ -33,7 +28,7 @@ class Resource (models.Model):
     skillset = models.CharField (max_length=500)
     cone_rate = models.FloatField()
     image = models.ImageField()
-    cv = models.ImageField()
+    cv = models.FileField(upload_to='media')
 
     def __str__(self):
          return self.name
@@ -64,7 +59,7 @@ class Assignment (models.Model):
     end = models.DateField()
 
     def __str__(self):
-            return self.contract.name
+            return f'{self.id}: {self.resource.name}, {self.position.project.code}, {self.end}'
 
 class Booking (models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.DO_NOTHING)

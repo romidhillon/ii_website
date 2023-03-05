@@ -7,11 +7,6 @@
 }
 
 
-.cv-table tr:hover {
-    color: #d70b52;
-    background-color: lightgray;
-}
-
 .cv-table img {
     border-radius: 10px;
 }
@@ -24,4 +19,17 @@
 
 .cv-table-descriptions i{
     font-size: 50px;
+}
+
+
+.action {
+    text-decoration: none;
+    border: 0.1rem solid #d70b52;
+    color: #d70b52;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.action:hover {
+    color: #d70b52;
 }

@@ -1,4 +1,24 @@
-*{
-    outline: 1px solid red;
-    box-sizing: border-box;
+.sign-up-image-2 {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    width: 100vw;
+}
+
+.sign-up-image-2 form {
+    margin-top: -10rem;
+    margin-left:-2rem ;
+    height: 30rem;
+}
+
+.sign-up-image {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    width: 100vw;
+}
+
+.sign-up-image form {
+    margin-top: -10rem;
+    margin-left:-2rem ;
 }

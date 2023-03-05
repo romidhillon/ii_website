@@ -1,18 +1,15 @@
-from typing_extensions import Self
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from users.forms import SignInForm, SignUpForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post
+from .models import Profile, Post, Comment
 from .forms import EditProfileForm, EditUserForm, PostCreateForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
+from django.core.paginator import Paginator
 
-
-# Create your views here.
 
 def sign_up (request):
     sign_up_form = SignUpForm()
@@ -23,10 +20,10 @@ def sign_up (request):
             print(new_user)
             username = form.cleaned_data.get('username')
             Profile.objects.create(user = new_user)
-            messages.success(request,f'Hi {username}, you have successfully created your account. Please sign-in to continue.')
+            messages.success(request,
+            f'Hi {username}, you have successfully created your account. Please sign-in to continue.')
             return redirect('../sign_in/')
         
-            # Profile.objects.create(user = request.user)
     else:
         form = SignUpForm()
 
@@ -39,7 +36,8 @@ def sign_up (request):
 def edit (request):
     if request.method == 'POST':
         user_form = EditUserForm(instance=request.user, data = request.POST)
-        user_profile = EditProfileForm(instance=request.user.profile, data = request.POST, files = request.FILES)
+        user_profile = EditProfileForm(instance=request.user.profile, 
+        data = request.POST, files = request.FILES)
         if user_form.is_valid() and user_profile.is_valid():
             user_form.save()
             user_profile.save()
@@ -66,10 +64,20 @@ def sign_in (request):
     }
     return render(request,'users/sign_in.html',context)
 
-
 @login_required
 def posts (request):
     posts = Post.objects.all()
+    pages = Paginator(posts,3)
+
+    num = 1
+    if request.GET.get("page"):
+        try: 
+            num = int(request.GET.get("page"))
+            if num > pages.num_pages:
+                raise ValueError
+        except:
+            num = 1
+    page = num
 
     form = PostCreateForm(request.POST)
     if form.is_valid():
@@ -81,18 +89,25 @@ def posts (request):
 
     user_posts = request.user.posts.all()
 
+    page_prev_link = None
+    page_next_link = None
+    if page > 1:
+        page_prev_link = f"{reverse('posts')}?page={page - 1}"
+    if page < pages.num_pages:
+        page_next_link = f"{reverse('posts')}?page={page + 1}"
+    
     context = { 
-        'form': form,
-        'posts':posts,
+        'form':form,
+        'posts':pages.page(page),
         'user_posts': user_posts,
-   
+        'page_prev_link': page_prev_link,
+        'page_next_link': page_next_link
     }
 
     return render(request,'users/posts.html',context)
 
 
 def likes (request, pk):
-
     post = get_object_or_404(Post, id = pk)
 
     if post.likes.contains(request.user):
@@ -102,9 +117,12 @@ def likes (request, pk):
     
     return HttpResponseRedirect(reverse('posts'))
 
-# def comments (request,pk):
-#     comment = Comment.objects.all(id = pk)
+def comments (request,pk):
+    post = get_object_or_404(Post, id = pk)
+    comment = Comment(content=request.POST.get("comment"),user=request.user)
+    post.comment_set.add(comment, bulk=False)
 
+    return HttpResponseRedirect(reverse('posts'))
     
 def sign_out(request):
     logout(request)
@@ -156,3 +174,9 @@ def profile_page (request):
     # }
 
     # return render(request,'users/posts.html',context)
+
+    # from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
+
+    # from django.contrib.auth import authenticate, 
+
+    # from typing_extensions import Self
