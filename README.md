@@ -21,11 +21,11 @@ Activate virtual environment:
 
 - For Windows:
 
-	.venv\Scripts\activate
+		.venv\Scripts\activate
 
 - For MacOS/Linux:
 
-	source .venv/bin/activate
+		source .venv/bin/activate
 
 Install project requirements:
 
