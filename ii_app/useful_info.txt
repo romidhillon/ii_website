@@ -1,7 +1,0 @@
-// process of django 
-
-// django server running --> the client/user makes a request to see a page by clicking a button 
-// Django creates a HttpRequest object that contains metadata about the users request
-// the page navigates to the url -----> django searches for the url in the application 
-// the url is found in the urls.py file ---> a view is associated with that url 
-// django then goes to the view ----> the users request object HttpRequest is the first argument to the view function. 

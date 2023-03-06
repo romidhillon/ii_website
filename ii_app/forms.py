@@ -2,7 +2,6 @@ from sqlite3 import Date
 from django import forms 
 from .models import Booking, Risk
 from django.forms import Form, ModelForm, DateField, widgets
-from attr import attrs
 from .choices import status_choices
 from .choices import risk_impact_choices
 from .choices import risk_probability_choices
